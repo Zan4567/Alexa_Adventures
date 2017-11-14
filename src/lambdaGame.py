@@ -70,46 +70,45 @@ def lambda_handler(event, context):
                     'current_scene': 1
                 }
             }
-    elif event["request"]["intent"]["name"] == "QuitTent":
+        elif event["request"]["intent"]["name"] == "QuitTent":
+            # This is where someone will quit the game.
+            pass
 
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-    if event["request"]["intent"]["name"] == "DinnerBotIntent":
-        dinner = random.choice(dinnerOptions)
-        response = {
-            'version': '1.0',
-            'response': {
-                'outputSpeech': {
-                    'type': 'PlainText',
-                    'text': dinner,
-                }
-            },
-            'sessionAttributes': {
-
-            }
-        }
-    else:
-        app = random.choice(sides)
-        response = {
-            'version': '1.0',
-            'response': {
-                'outputSpeech': {
-                    'type': 'PlainText',
-                    'text': app,
+    elif event["session"]["attributes"]['current_scene'] == 1:
+        if event["request"]["intent"]["name"] == "LeftTent":
+            response = {
+                'version': '1.0',
+                'response': {
+                    'outputSpeech': {
+                        'type': 'PlainText',
+                        'text': game.test_story.scenes[2].body,
+                    }
+                },
+                'sessionAttributes': {
+                    'current_scene': 2
                 }
             }
-        }
+        elif event["request"]["intent"]["name"] == "RightTent":
+            response = {
+                'version': '1.0',
+                'response': {
+                    'outputSpeech': {
+                        'type': 'PlainText',
+                        'text': game.test_story.scenes[3].body,
+                    }
+                },
+                'sessionAttributes': {
+                    'current_scene': 3
+                }
+            }
+        return response
 
-    return response
+
+
+
+
+
+
+
+
+
