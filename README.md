@@ -14,3 +14,22 @@ In order to contribute to Alexa Adventures, you must pip install pytest, pytest-
 **Brendan**
 **Allan**
 **Kevin**
+
+```javascript
+{
+  "intents": [
+    {
+      "intent": "StartTent"
+    },
+    {
+      "intent": "QuitTent"
+    },
+    {
+      "intent": "LeftTent"
+    },
+    {
+      "intent": "RightTent"
+    }
+  ]
+}
+```
