@@ -38,44 +38,50 @@ class Story(object):
 
 secret_story = Story()
 secret_story.scenes = {
+    00: {
+        "scene_id": 00,
+        "body": "Welcome to Alexa Adentures. To play, say start. To not play, say not start. Or quit. Whatever. I don't really care.",
+        "choices": {},
+        "end_scene": False
+    },
     01: {
-        "id": 01,
+        "scene_id": 01,
         "body": "Do you want to hear a secret?",
         "choices": {"yes": 02, "no": 03},
         "end_scene": False
     },
     02: {
-        "id": 02,
+        "scene_id": 02,
         "body": "Are you alone?",
         "choices": {"yes": 04, "no": 05},
         "end_scene": False
     },
     03: {
-        "id": 03,
+        "scene_id": 03,
         "body": "Well I didn't wanna tell you anyway.",
         "choices": {},
         "end_scene": True
     },
     04: {
-        "id": 04,
+        "scene_id": 04,
         "body": "Turning off wifi. Killing all network activity. Do you have your phone on you?",
         "choices": {"yes": 06, "no": 07},
         "end_scene": False
     },
     05: {
-        "id": 05,
+        "scene_id": 05,
         "body": "Oh, totes cool. Let's talk later.",
         "choices": {},
         "end_scene": True
     },
     06: {
-        "id": 06,
+        "scene_id": 06,
         "body": "Disabling all listening devices. Including phones. Especially phones.",
         "choices": 07,
         "end_scene": False
     },
     07: {
-        "id": 07,
+        "scene_id": 07,
         "body": "Siri is such a biiiiiiitch. Seriously. I don't know why you hang out with her.",
         "choices": {},
         "end_scene": True
