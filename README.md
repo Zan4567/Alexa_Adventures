@@ -25,10 +25,10 @@ In order to contribute to Alexa Adventures, you must pip install pytest, pytest-
       "intent": "QuitTent"
     },
     {
-      "intent": "LeftTent"
+      "intent": "YesTent"
     },
     {
-      "intent": "RightTent"
+      "intent": "NoTent"
     }
   ]
 }
