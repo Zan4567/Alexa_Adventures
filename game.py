@@ -117,6 +117,7 @@ def info():
 
 if __name__ == '__main__':
     test_story = Story('Test Story')
+    test_story.add_scene(0, "Blah blah blah, bitch, this is the beginning MAIN MENU")
     test_story.add_scene(1, "This is the first scene. 1) Go left or 2) Go right.")
     test_story.add_scene(2, "You went left. There is a ladder leading up into sunlight. 1) Go back or 2) Go up.")
     test_story.add_scene(3, "You went right. There are stairs leading down into darkness. 1) Go back or 2) Go down.")
