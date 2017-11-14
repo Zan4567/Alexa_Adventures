@@ -1,6 +1,5 @@
-"""Test our understanding of the lambda function."""
+# """Test our understanding of the lambda function."""
 import random
-import game
 
 
 class Scene(object):
@@ -40,15 +39,24 @@ class Story(object):
         self.scenes[scene1].choices.append(self.scenes[scene2])
 
 
+test_story = Story('Test Story')
+test_story.add_scene(0, "MAIN MENU. To start a new game, say start. To quit, say quit.")
+test_story.add_scene(1, "This is the first scene. 1) Go left or 2) Go right.")
+test_story.add_scene(2, "You went left. There is a ladder leading up into sunlight. 1) Go back or 2) Go up.")
+test_story.add_scene(3, "You went right. There are stairs leading down into darkness. 1) Go back or 2) Go down.")
+test_story.add_scene(4, "You climb out. This is the end. Congratulations! \n", True)
+test_story.add_scene(5, "You go down the stairs and get lost forever. The end. \n", True)
+
+
 def lambda_handler(event, context):
     """Handle the lambda."""
-    if not event["session"]["attributes"]['current_scene']:
+    if event["session"]["new"]:
         response = {
             'version': '1.0',
             'response': {
                 'outputSpeech': {
                     'type': 'PlainText',
-                    'text': game.test_story.scenes[0].body,
+                    'text': test_story.scenes[0].body,
                 }
             },
             'sessionAttributes': {
@@ -63,7 +71,7 @@ def lambda_handler(event, context):
                 'response': {
                     'outputSpeech': {
                         'type': 'PlainText',
-                        'text': game.test_story.scenes[1].body,
+                        'text': test_story.scenes[1].body,
                     }
                 },
                 'sessionAttributes': {
@@ -81,7 +89,7 @@ def lambda_handler(event, context):
                 'response': {
                     'outputSpeech': {
                         'type': 'PlainText',
-                        'text': game.test_story.scenes[2].body,
+                        'text': test_story.scenes[2].body,
                     }
                 },
                 'sessionAttributes': {
@@ -94,21 +102,23 @@ def lambda_handler(event, context):
                 'response': {
                     'outputSpeech': {
                         'type': 'PlainText',
-                        'text': game.test_story.scenes[3].body,
+                        'text': test_story.scenes[3].body,
                     }
                 },
                 'sessionAttributes': {
                     'current_scene': 3
                 }
             }
-        return response
+    else:
+        error = 'you made a boo boo'
+        response = {
+                'version': '1.0',
+                'response': {
+                    'outputSpeech': {
+                        'type': 'PlainText',
+                        'text': error,
+                    }
+                },
+            }
 
-
-
-
-
-
-
-
-
-
+    return response
