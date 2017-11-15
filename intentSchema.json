@@ -1,0 +1,22 @@
+{
+  "intents": [
+    {
+      "intent": "StartTent"
+    },
+    {
+      "intent": "QuitTent"
+    },
+    {
+      "intent": "YesTent"
+    },
+    {
+      "intent": "NoTent"
+    }
+    {
+      "intent": "AMAZON.CancelIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    }
+  ]
+}

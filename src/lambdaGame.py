@@ -79,6 +79,19 @@ secret_story.scenes = {
 
 def lambda_handler(event, context):
     """Handle the lambda."""
+    if event["request"]["type"] == "SessionEndedRequest":
+        response = {
+            'version': '1.0',
+            'response': {
+                'outputSpeech': {
+                    'type': 'PlainText',
+                    'text': "Goodbye",
+                }
+            },
+            'shouldEndSession': True
+        }
+        return response
+
     if event["session"]["new"]:
         current = "00"
         response = {
