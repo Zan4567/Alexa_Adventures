@@ -22,14 +22,57 @@ In order to contribute to Alexa Adventures, you must pip install pytest, pytest-
       "intent": "StartTent"
     },
     {
-      "intent": "QuitTent"
-    },
-    {
       "intent": "YesTent"
     },
     {
       "intent": "NoTent"
+    },
+    {
+      "intent": "UpTent"
+    },
+    {
+      "intent": "DownTent"
+    },
+    {
+      "intent": "LeftTent"
+    },
+    {
+      "intent": "RightTent"
+    },
+    {
+      "intent": "NorthTent"
+    },
+    {
+      "intent": "SouthTent"
+    },
+    {
+      "intent": "EastTent"
+    },
+    {
+      "intent": "WestTent"
+    },
+    {
+      "intent": "ForwardTent"
+    },
+    {
+      "intent": "BackTent"
+    },
+    {
+      "intent": "OneTent"
+    },
+    {
+      "intent": "TwoTent"
+    },
+    {
+      "intent": "WhatTent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
     }
   ]
 }
+
 ```

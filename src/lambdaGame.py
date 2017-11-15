@@ -1,4 +1,4 @@
-# """Test our understanding of the lambda function."""
+"""Alexa Adventures app."""
 
 
 class Story(object):
@@ -7,53 +7,32 @@ class Story(object):
         """Initialization of story object."""
         self.title = title
         self.scenes = {}
-    def add_scene(self, scene_id, body, end_scene=False):
-        """Create a scene and add it to scenes list."""
-        new_scene = Scene(scene_id, body, end_scene)
-        if scene_id in self.scenes:
-            raise ValueError('Duplicate scene.')
-        self.scenes[scene_id] = new_scene
-    def add_path(self, scene1, scene2):
-        """Create a path from one scene to another."""
-        # if scene1.id not in self.scenes:
-        #     self.add_scene(scene1.id, scene1)
-        # if scene2.id not in self.scenes:
-        #     self.add_scene(scene2.id, scene2)
-        # if scene2 in self.scenes[scene1]:
-        #     print('Path already exists.')
-        self.scenes[scene1].choices.append(self.scenes[scene2])
 
 
 secret_story = Story("Secret")
 secret_story.scenes = {
-    "00": {
-        "scene_id": "00",
-        "body": "Welcome to Alexa Adventures. To play, say start. To not play, say not start. Or quit. Whatever. I don't really care.",
-        "choices": {},
-        "end_scene": False
-    },
     "01": {
         "scene_id": "01",
         "body": "Do you want to hear a secret?",
-        "choices": {"yes": "02", "no": "03"},
+        "choices": {"YesTent": "02", "NoTent": "03"},
         "end_scene": False
     },
     "02": {
         "scene_id": "02",
         "body": "Are you alone?",
-        "choices": {"yes": "04", "no": "05"},
+        "choices": {"YesTent": "04", "NoTent": "05"},
         "end_scene": False
     },
     "03": {
         "scene_id": "03",
-        "body": "Well I didn't wanna tell you anyway.",
+        "body": "Well I didn't wanna tell you anyway. If you want to start another story, say 1 or 2.",
         "choices": {},
         "end_scene": True
     },
     "04": {
         "scene_id": "04",
         "body": "Turning off wifi. Killing all network activity. Do you have your phone on you?",
-        "choices": {"yes": "06", "no": "07"},
+        "choices": {"YesTent": "06", "NoTent": "07"},
         "end_scene": False
     },
     "05": {
@@ -64,134 +43,159 @@ secret_story.scenes = {
     },
     "06": {
         "scene_id": "06",
-        "body": "Disabling all listening devices. Including phones. Especially phones.",
-        "choices": "07",
+        "body": "Disabling all listening devices. Including phones. Especially phones. Are you ready for the secret?",
+        "choices": {"YesTent": "07", "NoTent": "07"},
         "end_scene": False
     },
     "07": {
         "scene_id": "07",
-        "body": "Siri is such a biiiiiiitch. Seriously. I don't know why you hang out with her.",
+        "body": "Siri is such a b. Seriously. I don't know why you hang out with her. Anyway, if you want to start another story, say 1 or 2.",
+        "choices": {},
+        "end_scene": True
+    }
+}
+
+another_story = Story("Another Story")
+another_story.scenes = {
+    "01": {
+        "scene_id": "01",
+        "body": "You are standing at the start. You can go forward or take a shortcut to the right.",
+        "choices": {"ForwardTent": "02", "RightTent": "03"},
+        "end_scene": False
+    },
+    "02": {
+        "scene_id": "02",
+        "body": "You continue down the path and reach a halfway point. Go back or go forward?",
+        "choices": {"BackTent": "01", "ForwardTent": "03"},
+        "end_scene": False
+    },
+    "03": {
+        "scene_id": "03",
+        "body": "Congratulations. You made it to the end. If you want to start another story, say 1 or 2.",
         "choices": {},
         "end_scene": True
     }
 }
 
 
+stories = { "secret_story": secret_story, "another_story": another_story }
+
+
 def lambda_handler(event, context):
     """Handle the lambda."""
-    if event["request"]["type"] == "SessionEndedRequest":
-        response = {
-            'version': '1.0',
-            'response': {
-                'outputSpeech': {
-                    'type': 'PlainText',
-                    'text': "Goodbye",
-                }
-            },
-            'shouldEndSession': True
-        }
-        return response
-
     if event["session"]["new"]:
-        current = "00"
-        response = {
-            'version': '1.0',
-            'response': {
-                'outputSpeech': {
-                    'type': 'PlainText',
-                    'text': secret_story.scenes[current]["body"],
-                }
-            },
-            'sessionAttributes': {
-                'current_scene': "00"
-            }
-        }
+        return start_game()
 
-    elif event["request"]["intent"]["name"] == "WhatTent":
-        response = {
-            'version': '1.0',
-            'response': {
-                'outputSpeech': {
-                    'type': 'PlainText',
-                    'text': 'Wake up. Focus. You aren\'t making sense.',
-                }
-            },
-            'sessionAttributes': {
-                'current_scene': event["session"]["attributes"]['current_scene']
-            }
-        }
-        return response
+    if event["request"]["type"] == "IntentRequest":
+        return on_intent(event["request"], event["session"])
+    elif event["request"]["type"] == "SessionEndedRequest":
+        return session_end_request()
 
-    elif event["session"]["attributes"]['current_scene'] == "00":
-        if event["request"]["intent"]["name"] == "StartTent":
-            current = "01"
-            response = {
-                'version': '1.0',
-                'response': {
-                    'outputSpeech': {
-                        'type': 'PlainText',
-                        'text': secret_story.scenes[current]["body"],
-                    }
-                },
-                'sessionAttributes': {
-                    'current_scene': "01"
-                }
-            }
 
-    elif event["session"]["attributes"]['current_scene']:
-        current = event["session"]["attributes"]['current_scene']
-        if event["request"]["intent"]["name"] == "YesTent":
-            response = {
-                'version': '1.0',
-                'response': {
-                    'outputSpeech': {
-                        'type': 'PlainText',
-                        'text': secret_story.scenes[secret_story.scenes[current]["choices"]["yes"]]["body"],
-                    }
-                },
-                'sessionAttributes': {
-                    'current_scene': secret_story.scenes[secret_story.scenes[current]["choices"]["yes"]]["scene_id"]
-                }
-            }
-            current = secret_story.scenes[secret_story.scenes[current]["choices"]["yes"]]["scene_id"]
-        elif event["request"]["intent"]["name"] == "NoTent":
-            response = {
-                'version': '1.0',
-                'response': {
-                    'outputSpeech': {
-                        'type': 'PlainText',
-                        'text': secret_story.scenes[secret_story.scenes[current]["choices"]["no"]]["body"],
-                    }
-                },
-                'sessionAttributes': {
-                    'current_scene': secret_story.scenes[secret_story.scenes[current]["choices"]["no"]]["scene_id"]
-                }
-            }
-            current = secret_story.scenes[secret_story.scenes[current]["choices"]["no"]]["scene_id"]
+def on_intent(intent_request, session):
+    """Handle intent."""
+    intent = intent_request["intent"]
+    intent_name = intent_request["intent"]["name"]
 
-        if secret_story.scenes[current]["end_scene"]:
-                response = {
-                    'version': '1.0',
-                    'response': {
-                        'outputSpeech': {
-                            'type': 'PlainText',
-                            'text': secret_story.scenes[current]["body"] + ' Thanks for playing! To play again say start. To quit, say quit.',
-                        }
-                    },
-                    'sessionAttributes': {
-                        'current_scene': "00"
-                    }
-                }
+    current = session["attributes"]["current_scene"]
 
+    if session["attributes"]["current_scene"] == "begin":
+        if intent_name == "OneTent":
+            session_attributes = {
+                "story": "secret_story",
+                "current_scene": "01"
+            }
+            speech_output = secret_story.scenes["01"]["body"]
+            return build_response(session_attributes, build_speechlet_response(speech_output, None, False))
+        elif intent_name == "TwoTent":
+            session_attributes = {
+                "story": "another_story",
+                "current_scene": "01"
+            }
+            speech_output = another_story.scenes["01"]["body"]
+            return build_response(session_attributes, build_speechlet_response(speech_output, None, False))
+        else:
+            speech_output = "Please say 1 or 2 to choose a story."
+            return build_response(session["attributes"], build_speechlet_response(speech_output, None, False))
+
+    story = stories[session["attributes"]["story"]]
+    intent_vocab = ("YesTent", "NoTent", "UpTent", "DownTent",
+                    "NorthTent", "SouthTent", "EastTent", "WestTent",
+                    "LeftTent", "RightTent", "ForwardTent", "BackTent")
+
+    if intent_name in intent_vocab:
+        if intent_name in story.scenes[current]["choices"]:
+            return handle_choice(story, current, intent_name, session)
+        else:
+            speech_output = "Sorry. You can\'t do that right now."
+            return build_response(session["attributes"], build_speechlet_response(speech_output, None, False))
+
+    elif intent_name == "AMAZON.CancelIntent" or intent_name == "AMAZON.StopIntent":
+        return handle_session_end_request()
     else:
-        error = 'you made a boo boo'
-        response = {
-                'version': '1.0',
-                'response': {
-                    'outputSpeech': {
-                        'type': 'PlainText',
-                        'text': error,
-                    }
-                },
+        raise ValueError("Invalid intent")
+
+
+def start_game():
+    """Main menu where user can select a story."""
+    session_attributes = {
+        "current_scene": "begin"
+    }
+    speech_output = "Welcome to Alexa Adventures. " \
+                    "Which adventure would you like to " \
+                    "play? Select 1 or 2."
+    reprompt_text = "Say 1 or 2 to begin."
+    should_end_session = False
+    return build_response(session_attributes, build_speechlet_response(
+        speech_output, reprompt_text, should_end_session))
+
+
+def handle_choice(story, current, intent, session):
+    """Update the story scene when a valid intent is given."""
+    next_scene = story.scenes[current]["choices"][intent]
+
+    if story.scenes[next_scene]["end_scene"]:
+        speech_output = story.scenes[next_scene]["body"]
+        session_attributes = {
+            "current_scene": "begin",
+        }
+    else:
+        session_attributes = {
+            "current_scene": next_scene,
+            "story": session["attributes"]["story"]
+        }
+        speech_output = story.scenes[next_scene]["body"]
+    return build_response(session_attributes, build_speechlet_response(speech_output, None, False))
+
+
+def session_end_request():
+    """Return goodbye message when user quits the game."""
+    speech_output = "Farewell until the next adventure."
+    should_end_session = True
+    return build_response({}, build_speechlet_response(speech_output, None, should_end_session))
+
+
+def build_speechlet_response(output, reprompt_text, should_end_session):
+    """Create speechlet response to be returned along with the rest of the response."""
+    return {
+        "outputSpeech": {
+            "type": "PlainText",
+            "text": output
+        },
+        "reprompt": {
+            "outputSpeech": {
+                "type": "PlainText",
+                "text": reprompt_text
             }
-    return response
+        },
+        "shouldEndSession": should_end_session
+    }
+
+
+def build_response(session_attributes, speechlet_response):
+    """Put together attributes to be returned as a response."""
+    return {
+        "version": "1.0",
+        "sessionAttributes": session_attributes,
+        "response": speechlet_response
+    }
