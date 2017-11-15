@@ -28,13 +28,13 @@ secret_story = Story("Secret")
 secret_story.scenes = {
     "00": {
         "scene_id": "00",
-        "body": "Welcome to Alexa Adventures. To play, say start. To not play, say not start. Or quit. Whatever. I don't really care.",
+        "body": "Welcome to Alexa Adventures. To play, say start. To not play, say not start. Or quit. <prosody rate='fast'>Whatever. I don't really care.</prosody>",
         "choices": {},
         "end_scene": False
     },
     "01": {
         "scene_id": "01",
-        "body": "Do you want to hear a secret?",
+        "body": "<amazon:effect name='whispered'>Do you want to hear a secret?</amazon:effect>",
         "choices": {"yes": "02", "no": "03"},
         "end_scene": False
     },
@@ -58,7 +58,7 @@ secret_story.scenes = {
     },
     "05": {
         "scene_id": "05",
-        "body": "Oh, totes cool. Let's talk later.",
+        "body": "<emphasis level=reduced>Oh, totes cool. Let's talk later.</emphasis>",
         "choices": {},
         "end_scene": True
     },
@@ -70,7 +70,7 @@ secret_story.scenes = {
     },
     "07": {
         "scene_id": "07",
-        "body": "Siri is such a biiiiiiitch. Seriously. I don't know why you hang out with her.",
+        "body": "Siri is such a biiiiiiitch. <break strength='x-strong' /> Seriously. <break strength='x-strong' /> I don't know why you hang out with her.",
         "choices": {},
         "end_scene": True
     }
@@ -85,8 +85,8 @@ def lambda_handler(event, context):
             'version': '1.0',
             'response': {
                 'outputSpeech': {
-                    'type': 'PlainText',
-                    'text': secret_story.scenes[current]["body"],
+                    'type': 'SSML',
+                    'ssml': '<speak>' + secret_story.scenes[current]["body"] + '</speak>',
                 }
             },
             'sessionAttributes': {
@@ -100,8 +100,8 @@ def lambda_handler(event, context):
                 'version': '1.0',
                 'response': {
                     'outputSpeech': {
-                        'type': 'PlainText',
-                        'text': secret_story.scenes[current]["body"],
+                        'type': 'SSML',
+                        'ssml': '<speak>' + secret_story.scenes[current]["body"] + '</speak>',
                     }
                 },
                 'sessionAttributes': {
@@ -118,8 +118,8 @@ def lambda_handler(event, context):
                 'version': '1.0',
                 'response': {
                     'outputSpeech': {
-                        'type': 'PlainText',
-                        'text': secret_story.scenes[secret_story.scenes[current]["choices"]["yes"]]["body"],
+                        'type': 'SSML',
+                        'ssml': '<speak>' + secret_story.scenes[secret_story.scenes[current]["choices"]["yes"]]["body"] + '</speak>',
                     }
                 },
                 'sessionAttributes': {
@@ -132,8 +132,8 @@ def lambda_handler(event, context):
                 'version': '1.0',
                 'response': {
                     'outputSpeech': {
-                        'type': 'PlainText',
-                        'text': secret_story.scenes[secret_story.scenes[current]["choices"]["no"]]["body"],
+                        'type': 'SSML',
+                        'ssml': '<speak>' + secret_story.scenes[secret_story.scenes[current]["choices"]["no"]]["body"] + '</speak>',
                     }
                 },
                 'sessionAttributes': {
@@ -147,8 +147,8 @@ def lambda_handler(event, context):
                 'version': '1.0',
                 'response': {
                     'outputSpeech': {
-                        'type': 'PlainText',
-                        'text': secret_story.scenes[current]["body"] + ' Thanks for playing! To play again say start. To quit, say quit.',
+                        'type': 'SSML',
+                        'ssml': '<speak>' + secret_story.scenes[current]["body"] + ' Thanks for playing! To play again say start. To quit, say quit.' + '</speak>',
                     }
                 },
                 'sessionAttributes': {
@@ -161,8 +161,8 @@ def lambda_handler(event, context):
             'version': '1.0',
             'response': {
                 'outputSpeech': {
-                    'type': 'PlainText',
-                    'text': error,
+                    'type': 'SSML',
+                    'ssml': '<speak>' + error + '</speak>',
                 }
             },
         }
