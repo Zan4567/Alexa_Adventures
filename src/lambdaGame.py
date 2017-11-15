@@ -79,6 +79,19 @@ secret_story.scenes = {
 
 def lambda_handler(event, context):
     """Handle the lambda."""
+    if event["request"]["type"] == "SessionEndedRequest":
+        response = {
+            'version': '1.0',
+            'response': {
+                'outputSpeech': {
+                    'type': 'PlainText',
+                    'text': "Goodbye",
+                }
+            },
+            'shouldEndSession': True
+        }
+        return response
+
     if event["session"]["new"]:
         current = "00"
         response = {
@@ -93,6 +106,22 @@ def lambda_handler(event, context):
                 'current_scene': "00"
             }
         }
+
+    elif event["request"]["intent"]["name"] == "WhatTent":
+        response = {
+            'version': '1.0',
+            'response': {
+                'outputSpeech': {
+                    'type': 'PlainText',
+                    'text': 'Wake up. Focus. You aren\'t making sense.',
+                }
+            },
+            'sessionAttributes': {
+                'current_scene': event["session"]["attributes"]['current_scene']
+            }
+        }
+        return response
+
     elif event["session"]["attributes"]['current_scene'] == "00":
         if event["request"]["intent"]["name"] == "StartTent":
             current = "01"
@@ -108,9 +137,7 @@ def lambda_handler(event, context):
                     'current_scene': "01"
                 }
             }
-        elif event["request"]["intent"]["name"] == "QuitTent":
-            # This is where someone will quit the game.
-            pass
+
     elif event["session"]["attributes"]['current_scene']:
         current = event["session"]["attributes"]['current_scene']
         if event["request"]["intent"]["name"] == "YesTent":

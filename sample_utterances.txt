@@ -1,0 +1,9 @@
+StartTent start game
+StartTent start
+QuitTent quit game
+QuitTent quit
+YesTent yes
+YesTent yeah
+YesTent sure
+NoTent no
+NoTent nope
