@@ -168,6 +168,21 @@ def lambda_handler(event, context):
                 }
             }
             current = secret_story.scenes[secret_story.scenes[current]["choices"]["no"]]["scene_id"]
+
+        if secret_story.scenes[current]["end_scene"]:
+                response = {
+                    'version': '1.0',
+                    'response': {
+                        'outputSpeech': {
+                            'type': 'PlainText',
+                            'text': secret_story.scenes[current]["body"] + ' Thanks for playing! To play again say start. To quit, say quit.',
+                        }
+                    },
+                    'sessionAttributes': {
+                        'current_scene': "00"
+                    }
+                }
+
     else:
         error = 'you made a boo boo'
         response = {
