@@ -1,0 +1,26 @@
+<></>
+<amazon:effect name="whispered">whisper</amazon:effect>
+<audio src="https://sample.website.com/audio/file.mp3" />
+<break strength="none/x-weak/weak/medium/strong/x-strong" or time="[#]s" />
+<emphasis ></emphasis>
+    level="strong/moderate/reduced"
+<prosody ></prosody>
+    rate="x-slow/slow/medium/fast/x-fast/n%"
+    pitch="x-low/low/medium/high/x-high/+n%/-n%"
+    volume="silent/x-soft/soft/medium/loud/x-loud/+ndB/-ndB"
+<s>this is a sentence</s>
+<p>this is a paragraph</p>
+
+<say-as interpret-as='interjection'>bazinga!</say-as>
+interpret-as=   characters, spell-out
+                cardinal, number
+                ordinal
+                digits
+                fraction
+                unit
+                date
+                time
+                telephone
+                address
+                interjection
+                expletive

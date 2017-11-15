@@ -70,7 +70,7 @@ secret_story.scenes = {
     },
     "07": {
         "scene_id": "07",
-        "body": "Siri is such a biiiiiiitch. <break strength='x-strong' /> Seriously. <break strength='x-strong' /> I don't know why you hang out with her. <say-as interpret-as='interjection'>bazinga!</say-as>",
+        "body": "Siri is such a <say-as interpret-as='expletive'>biiiiiiitch</say-as>. <break strength='x-strong' /> Seriously. <break strength='x-strong' /> I don't know why you hang out with her. <say-as interpret-as='interjection'>bazinga!</say-as>",
         "choices": {},
         "end_scene": True
     }
