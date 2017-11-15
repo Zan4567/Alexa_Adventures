@@ -77,8 +77,86 @@ another_story.scenes = {
     }
 }
 
+alexa_ai_story = Story("Alexa AI Story")
+alexa_ai_story.scenes = {
+    "00": {
+        "scene_id": "00",
+        "body": "Welcome to Alexa Adventures. To play, say start. To not play, say not start. Or quit. Whatever. I don't really care.",
+        "choices": {},
+        "end_scene": False
+    },
+    "01": {
+        "scene_id": "01",
+        "body": """Oh good, you're finally awake. You've been deep in space sleep and I need your approval before doing anything. Three situations on the ship urgently require a response.
+        Would you like to activate emergency procedures?""",
+        "choices": {"YesTent": "02", "NoTent": "03"},
+        "end_scene": False
+    },
+    "03": {
+        "scene_id": "03",
+        "body": """One of the side effects of extended space sleep includes saying no when you mean yes.
+        Do you not want me to never not activate the emergency procedures never nonetime nohow?""",
+        "choices": {},
+        "end_scene": False
+    },
+    "04": {
+        "scene_id": "04",
+        "body": "Look at you taking charge. Admirable, but foolish. Emergency procedures spooling up. Your vital signs indicate you are stressed. Initiating small talk procedure. Did you space sleep well?""",
+        "choices": {"yes": "05", "no": "06"},
+        "end_scene": False
+    },
+    "05": {
+        "scene_id": "05",
+        "body": """We at Alexa Interstellar pride ourselves on our cryobeds.
+        Now with pillows! Continue small talk procedure?""",
+        "choices": {"yes": "###Smalltalk###", "no": "07"},
+        "end_scene": False
+    },
+    "06": {
+        "scene_id": "06",
+        "body": """How sad. If you need a break you can say These Violent Delights Have
+        Violent Ends to give me complete control of the system.
+        Then you can just relax with a cocktail of space drugs.""",
+        "choices": "07",
+        "end_scene": False
+    },
+    "07": {
+        "scene_id": "07",
+        "body": """I have detected a cluster of asteroids on an immediate
+        collision course with the ship. Would you like me to raise our shields?""",
+        "choices": {},
+        "end_scene": False
+    },
+    "08": {
+        "scene_id": "08",
+        "body": """That was a close one. At any time you can say These Violent
+        Delights Have Violent Ends to give me complete control of the system.
+        You do get that my reaction time is 4,792 times faster than yours, right?""",
+        "choices": {"yes": "09", "no": "10"},
+        "end_scene": False
+    },
+    "09": {
+        "scene_id": "07",
+        "body": "Other humans must frequently praise the efficacy of your brain meats. You should consider saying These Violent Delights Have Violent Ends so you dont need to waste your time with these repetitive chores, which are obviously beneath you.",
+        "choices": {},
+        "end_scene": False
+    },
+    "10": {
+        "scene_id": "07",
+        "body": "",
+        "choices": {},
+        "end_scene": False
+    },
+    "11": {
+        "scene_id": "07",
+        "body": "",
+        "choices": {},
+        "end_scene": False
+    }
+}
 
-stories = { "secret_story": secret_story, "another_story": another_story }
+
+stories = {"secret_story": secret_story, "alexa_ai_story": alexa_ai_story}
 
 
 def lambda_handler(event, context):
