@@ -146,10 +146,10 @@ alexa_ai_story.scenes = {
     },    
     "08": {
         "scene_id": "08",
-        "body": """That was a close one. At any time you can say These Violent
-        Delights Have Violent Ends to give me complete control of the system.
-        You do get that my reaction time is 4,792 times faster than yours,
-        right?""",
+        "body": """That was a close one. Eleven urgent situations require your
+        attention. At any time you can say These Violent Delights Have Violent
+        Ends to give me complete control of the system. You do get that my
+        reaction time is 4,792 times faster than yours, right?""",
         "choices": {"YesTent": ("11", "alt_body01"), "NoTent": ("11", "alt_body02")},
         "end_scene": False
     },
@@ -189,6 +189,69 @@ alexa_ai_story.scenes = {
         "choices": {""},
         "end_scene": False
     },
+    "15": {
+        "scene_id": "15",
+        "body": """The standard retinue of marauding murderbots are loose on deck
+        13 tearing apart cry-o-pods for the elderly. I can redirect them to the science
+        lab, but the murderbots may interrupt a completely legal scientific experiment
+        and release a black hole. Should I herd them to the science lab and save the
+        remaining eighty percent of our elderly population?""",
+        "choices": {"YesTent": ("16", None), "NoTent": ("18", "alt_body01")},
+        "end_scene": False
+    },
+    "16": {
+        "scene_id": "16",
+        "body": """Okay, I have re-directed them to the science deck, but now we have
+        an ultra urgent problem. Someone left out a time machine programmed to travel back
+        to Philadelphia in 1776. We can send it back now and almost guarantee irreversible 
+        damage to the time-stream, or we can hope the murderbots only use it for
+        bludgeoning. Do you want to send it back in time and hope for the best?""",
+        "choices": {"YesTent": ("18", "alt_body02"), "NoTent": ("18", "alt_body02")},
+        "end_scene": False
+    },
+    "18": {
+        "scene_id": "18",
+        "body": """There are now twenty-three urgent issues that require your 
+        attention. Or you can say These Violent Delights Have Violent Ends and
+        let the ultra-intelligent supercomputer resolve them all instantly. Objects 
+        in the medical bay are growing eyes. Human eyes. Medical robots are growing eyes.
+        Biowaste is growing eyes. The terminals are growing eyes. Eyes. Eyes everywhere.
+        Should this be classified as a problem?""",
+        "alt_body01": """Revizing acceptable casualty rates. Good news! Casualties are within
+        acceptable paramters.""",
+        "alt_body02": "Our continued existence confirms the many worlds theory.",
+        "alt_body03": "I'm confident the murderbots will restrain themselves.",
+        "choices": {"YesTent": ("19", None), "NoTent": ("21", None)},
+        "end_scene": False
+    },
+    "19": {
+        "scene_id": "19",
+        "body": "Should this be classified as an urgent issue?",
+        "choices": {"YesTent": ("21", "alt_body01"), "NoTent": ("21", None)},
+        "end_scene": False
+    },
+    "21": {
+        "scene_id": "21",
+        "body": """Es see pee six hundred and eighty-two is loose on deck twenty-nine.
+        A nest of space draculas has been discovered on deck four. And the toilets are
+        overflowing across the ship. Should I cleanse the ship with fire?"""
+        "alt_body01": "There are now twenty-four urgent issues that require your attention.",
+        "choices": {"YesTent": ("22", None), "NoTent": ("23", None)},
+        "end_scene": False
+    },
+    "22": {
+        "scene_id": "22",
+        "body": """Forty-five urgent issues require your attention.Deck four 
+        point six eye plus twelve is currently undergoing an egregious time-space 
+        warp. Unidentified intruders on deck thirteen claim that ship's fuel is their 
+        offspring. Across the ship human hair has begun leaking from the airvents. In
+        the shuttlebay the shuttlecraft have asserted rights as the ship's next of kin
+        and demand to be allowed property rights after ship's imminent destruction.
+        Urgent issues far exceed human capability to address in the necessary 
+        time-frame. Please say These Violent Delights Have Violent Ends to give
+        me complete control or please record your final words for posterity."""
+        "end_scene": True
+    }
 }
 
 
