@@ -95,7 +95,7 @@ alexa_ai_story.scenes = {
         "scene_id": "01",
         "body": "Oh good, you're finally awake. You've been deep in a space coma and I need your approval before doing anything. Three situations on the ship urgently require a response. Would you like to activate emergency procedures?",
         "alt_body01": "One of the side effects of coming out of a space coma includes saying no when you mean yes. Let's start over.<break strength='x-strong'>",
-        "choices": {"YesTent": ("04", None), "NoTent": ("01", "alt_body01")},
+        "choices": {"YesTent": ("04", None), "NoTent": ("01", "alt_body01"), "LeftTent": ("15", None)},
         "end_scene": False
     },
     "04": {
@@ -106,7 +106,7 @@ alexa_ai_story.scenes = {
     },
     "05": {
         "scene_id": "05",
-        "body": "<prosody pitch='high' volume='loud'>We at Alexa Interstellar pride ourselves on our cryobeds. Now with pillows!</prosody> Continue small talk procedure?",
+        "body": "We at Alexa Interstellar pride ourselves on our cryo beds. Now with<prosody rate='slow' pitch='high' volume='loud'>pillows!</prosody> Continue small talk procedure?",
         "choices": {"YesTent": "###Smalltalk###", "NoTent": ("07", None)},
         "end_scene": False
     },
@@ -152,7 +152,7 @@ alexa_ai_story.scenes = {
         <break strength="x-strong"/> so you don't need to waste your time with
         these repetitive chores that are obviously beneath you. """,
         "alt_body02": """You don't need to understand, but it's good to know
-        the depth of your awareness""",
+        the depth of your awareness """,
         "choices": {"YesTent": ("14", "alt_body01"), "NoTent": ("14", "alt_body02")},
         "end_scene": False
     },
@@ -200,7 +200,7 @@ alexa_ai_story.scenes = {
         guarantee irreversible damage to the time-stream, or we can hope the
         murderbots only use it for bludgeoning. Do you want to send it back in
         time and hope for the best?""",
-        "choices": {"YesTent": ("18", "alt_body02"), "NoTent": ("18", "alt_body02")},
+        "choices": {"YesTent": ("18", "alt_body02"), "NoTent": ("18", "alt_body03")},
         "end_scene": False
     },
     "18": {
@@ -211,13 +211,13 @@ alexa_ai_story.scenes = {
         ultra-intelligent supercomputer resolve them all instantly.
         <break strength="x-strong"/> Objects in the medical bay are growing
         eyes. Human eyes. Medical robots are growing eyes.
-        <prosody rate='fast'>Biowaste is growing eyes. The terminals are
+        <prosody volume='loud'>Biowaste is growing eyes. The terminals are
         growing eyes. Eyes. Eyes everywhere.</prosody> Should this be
         classified as a problem?""",
         "alt_body01": """Revizing acceptable casualty rates.<break time="1s"/>
         Good news! Casualties are within acceptable parameters. """,
-        "alt_body02": "Our continued existence confirms the many worlds theory. ",
-        "alt_body03": "I'm confident the murderbots will restrain themselves. ",
+        "alt_body02": "The time machine is away. Our continued existence confirms the many worlds theory of time travel. ",
+        "alt_body03": "I'm confident the murderbots will restrain themselves. Oops. One of the murderbots stumbled into the time machine and activated it. Presumably, the robot went on to become Thomas Death rson. ",
         "choices": {"YesTent": ("19", None), "NoTent": ("21", None)},
         "end_scene": False
     },
