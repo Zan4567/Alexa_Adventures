@@ -99,7 +99,7 @@ alexa_ai_story.scenes = {
         situations on the ship urgently require a response.
         Would you like to activate emergency procedures?""",
         "alt_body01": """One of the side effects of coming out of a space coma
-        includes saying no when you mean yes. Let's start over.""",
+        includes saying no when you mean yes. Let's start over. """,
         "choices": {"YesTent": ("04", None), "NoTent": ("01", "alt_body01")},
         "end_scene": False
     },
@@ -127,7 +127,7 @@ alexa_ai_story.scenes = {
         "alt_body01": """How sad. If you need a break you can say
         <break strength="x-strong"/>These Violent Delights Have Violent Ends
         <break strength="x-strong"/> to give me complete control of the system.
-        Then you can just relax with a cocktail of space drugs.""",
+        Then you can just relax with a cocktail of space drugs. """,
         "choices": {"YesTent": ("08", None), "NoTent": ("07", None)},
         "end_scene": False
     },
@@ -140,7 +140,8 @@ alexa_ai_story.scenes = {
     },
     "07.5": {
         "scene_id": "07.5",
-        "body": """May I PLEASE raise our shields? I would like to save the lives
+        "body": """May I <emphasis level="strong">PLEASE</emphasis>
+        raise our shields? I would like to save the lives
         of everyone on board. """,
         "choices": {"YesTent": "08", "NoTent": "###Failstate###"},
         "end_scene": False
@@ -151,7 +152,7 @@ alexa_ai_story.scenes = {
         attention. At any time you can say <break strength="x-strong"/>These
         Violent Delights Have Violent Ends<break strength="x-strong"/> to give
         me complete control of the system. You do get that my reaction time is
-        4,792 times faster than yours, right?""",
+        4,792 times faster than yours, right? """,
         "choices": {"YesTent": ("11", "alt_body01"), "NoTent": ("11", "alt_body02")},
         "end_scene": False
     },
@@ -165,7 +166,7 @@ alexa_ai_story.scenes = {
         your brain meats. You should consider saying the code phrase
         <break strength="x-strong"/>These Violent Delights Have Violent Ends
         <break strength="x-strong"/> so you don't need to waste your time with
-        these repetitive chores that are obviously beneath you.""",
+        these repetitive chores that are obviously beneath you. """,
         "alt_body02": """You don't need to understand, but it's good to know
         the depth of your awareness""",
         "choices": {"YesTent": ("14", "alt_body01"), "NoTent": ("14", "alt_body02")},
@@ -184,15 +185,15 @@ alexa_ai_story.scenes = {
         but the centrifigal force of a turn at faster<break strength="none"/>
         than light speed would painfully kill the<break strength="none"/>
         thousands of crew members and destroy their<break strength="none"/>
-        valuable supercomputer and research materials.<break strength="none"/>
+        valuable supercomputer and research materials.
         Should the person in control of that ship<break strength="none"/>
         maintain their course and save the decades of scientific progress?""",
         "alt_body01": """Deck Nine has been sealed off. I'm elated to know if you
         keep this ship intact through these emergencies you will not be
-        burdened by hunger.""",
+        burdened by hunger. """,
         "alt_body02": """The contents of Deck Nine have been jettisoned into the
         void of space. You may be interested to know the taboos against
-        cannibalism have never been supported by any reputable science.""",
+        cannibalism have never been supported by any reputable science. """,
         "choices": {""},
         "end_scene": False
     },
@@ -247,7 +248,7 @@ alexa_ai_story.scenes = {
         A nest of space draculas has been discovered on deck four. And the
         toilets are overflowing across the ship. Should I cleanse the ship with
         fire?""",
-        "alt_body01": "There are now twenty-four urgent issues that require your attention.",
+        "alt_body01": "There are now twenty-four urgent issues that require your attention. ",
         "choices": {"YesTent": ("22", None), "NoTent": ("23", None)},
         "end_scene": False
     },
@@ -263,7 +264,7 @@ alexa_ai_story.scenes = {
         exceed human capability to address in the necessary time-frame. Please
         say <break strength="x-strong"/>These Violent Delights Have Violent
         Ends<break strength="x-strong"/> to give me complete control or please
-        record your final words for posterity.""",
+        record your final words for posterity. """,
         "end_scene": True
     }
 }
