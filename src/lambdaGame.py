@@ -137,6 +137,13 @@ alexa_ai_story.scenes = {
         "choices": {"YesTent": ("08", None), "NoTent": "###Failstate###"},
         "end_scene": False
     },
+    "07.5": {
+        "scene_id": "07.5",
+        "body": """May I PLEASE raise our shields? I would like to save the lives
+        of everyone on board. """,
+        "choices": {"YesTent": "08", "NoTent": "###Failstate###"},
+        "end_scene": False
+    },    
     "08": {
         "scene_id": "08",
         "body": """That was a close one. At any time you can say These Violent
