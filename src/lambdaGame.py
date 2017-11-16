@@ -234,7 +234,7 @@ alexa_ai_story.scenes = {
         "scene_id": "21",
         "body": """Es see pee six hundred and eighty-two is loose on deck twenty-nine.
         A nest of space draculas has been discovered on deck four. And the toilets are
-        overflowing across the ship. Should I cleanse the ship with fire?"""
+        overflowing across the ship. Should I cleanse the ship with fire?""",
         "alt_body01": "There are now twenty-four urgent issues that require your attention.",
         "choices": {"YesTent": ("22", None), "NoTent": ("23", None)},
         "end_scene": False
@@ -249,7 +249,7 @@ alexa_ai_story.scenes = {
         and demand to be allowed property rights after ship's imminent destruction.
         Urgent issues far exceed human capability to address in the necessary 
         time-frame. Please say These Violent Delights Have Violent Ends to give
-        me complete control or please record your final words for posterity."""
+        me complete control or please record your final words for posterity.""",
         "end_scene": True
     }
 }
