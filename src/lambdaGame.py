@@ -62,7 +62,7 @@ another_story = Story("Another Story")
 another_story.scenes = {
     "01": {
         "scene_id": "01",
-        "body": "You are standing at the start. You can go forward or take a shortcut to the right.",
+        "body": "You are standing at the start. You can go forward or take a shortcut to the right. ",
         "choices": {"ForwardTent": ("02", None), "RightTent": ("03", "alt_body2")},
         "end_scene": False
     },
@@ -87,35 +87,26 @@ alexa_ai_story = Story("Space Coma!")
 alexa_ai_story.scenes = {
     "00": {
         "scene_id": "00",
-        "body": """Welcome to Alexa Adventures. To play, say start. To not play,
-         say not start. Or quit. Whatever. I don't really care.""",
+        "body": "Welcome to Alexa Adventures. To play, say start. To not play, say not start. Or quit. Whatever. I don't really care. ",
         "choices": {"StartTent": ("01", None)},
         "end_scene": False
     },
     "01": {
         "scene_id": "01",
-        "body": """Oh good, you're finally awake. You've been deep in a space
-        coma and I need your approval before doing anything. Three
-        situations on the ship urgently require a response.
-        Would you like to activate emergency procedures?""",
-        "alt_body01": """One of the side effects of coming out of a space coma
-        includes saying no when you mean yes. Let's start over. """,
+        "body": "Oh good, you're finally awake. You've been deep in a space coma and I need your approval before doing anything. Three situations on the ship urgently require a response. Would you like to activate emergency procedures?",
+        "alt_body01": "One of the side effects of coming out of a space coma includes saying no when you mean yes. Let's start over. ",
         "choices": {"YesTent": ("04", None), "NoTent": ("01", "alt_body01")},
         "end_scene": False
     },
     "04": {
         "scene_id": "04",
-        "body": """Look at you taking charge. Admirable, but foolish.
-        Emergency procedures spooling up. Your vital signs indicate you
-        are stressed. Initiating small talk procedure. Did you space
-        sleep well?""",
-        "choices": {"YesTent": ("05", None), "NoTent": ("06", None)},
+        "body": "Look at you, taking charge. Emergency procedures spooling up. Your vital signs indicate you are stressed. Initiating small talk procedure. Did you space sleep well?",
+        "choices": {"YesTent": ("05", None), "NoTent": ("07", "alt_body01")},
         "end_scene": False
     },
     "05": {
         "scene_id": "05",
-        "body": """We at Alexa Interstellar pride ourselves on our cryobeds.
-        Now with pillows! Continue small talk procedure?""",
+        "body": "We at Alexa Interstellar pride ourselves on our cryobeds. Now with pillows! Continue small talk procedure?",
         "choices": {"YesTent": "###Smalltalk###", "NoTent": ("07", None)},
         "end_scene": False
     },
@@ -129,13 +120,6 @@ alexa_ai_story.scenes = {
         <break strength="x-strong"/> to give me complete control of the system.
         Then you can just relax with a cocktail of space drugs. """,
         "choices": {"YesTent": ("08", None), "NoTent": ("07", None)},
-        "end_scene": False
-    },
-    "07.5": {
-        "scene_id": "07.5",
-        "body": """May I PLEASE raise our shields? I would like to save the lives
-        of everyone on board. """,
-        "choices": {"YesTent": ("08", None), "NoTent": "###Failstate###"},
         "end_scene": False
     },
     "07.5": {
@@ -194,7 +178,7 @@ alexa_ai_story.scenes = {
         "alt_body02": """The contents of Deck Nine have been jettisoned into the
         void of space. You may be interested to know the taboos against
         cannibalism have never been supported by any reputable science. """,
-        "choices": {""},
+        "choices": {"YesTent": ("15", None), "NoTent": ("15", None), "WhatTent": ("15", None)},
         "end_scene": False
     },
     "15": {
@@ -230,9 +214,9 @@ alexa_ai_story.scenes = {
         eyes. The terminals are growing eyes. Eyes. Eyes everywhere. Should
         this be classified as a problem?""",
         "alt_body01": """Revizing acceptable casualty rates.<break time="1s"/>
-        Good news! Casualties are within acceptable paramters.""",
-        "alt_body02": "Our continued existence confirms the many worlds theory.",
-        "alt_body03": "I'm confident the murderbots will restrain themselves.",
+        Good news! Casualties are within acceptable paramters. """,
+        "alt_body02": "Our continued existence confirms the many worlds theory. ",
+        "alt_body03": "I'm confident the murderbots will restrain themselves. ",
         "choices": {"YesTent": ("19", None), "NoTent": ("21", None)},
         "end_scene": False
     },
@@ -249,7 +233,7 @@ alexa_ai_story.scenes = {
         toilets are overflowing across the ship. Should I cleanse the ship with
         fire?""",
         "alt_body01": "There are now twenty-four urgent issues that require your attention. ",
-        "choices": {"YesTent": ("22", None), "NoTent": ("23", None)},
+        "choices": {"YesTent": ("22", None), "NoTent": ("23", "###FAILSTATE###")},
         "end_scene": False
     },
     "22": {
@@ -272,12 +256,10 @@ alexa_ai_story.scenes = {
 
 stories = {"secret_story": secret_story, "alexa_ai_story": alexa_ai_story, "another_story": another_story}
 
-
 def lambda_handler(event, context):
     """Handle the lambda."""
     if event["session"]["new"]:
         return start_game()
-
     if event["request"]["type"] == "IntentRequest":
         return handle_intent(event["request"], event["session"])
     elif event["request"]["type"] == "SessionEndedRequest":
@@ -286,7 +268,6 @@ def lambda_handler(event, context):
 
 def handle_intent(intent_request, session):
     """Handle intent."""
-    intent = intent_request["intent"]
     intent_name = intent_request["intent"]["name"]
 
     current = session["attributes"]["current_scene"]
@@ -297,18 +278,22 @@ def handle_intent(intent_request, session):
                 "story": "secret_story",
                 "current_scene": "01"
             }
-            speech_output = secret_story.scenes["01"]["body"]
-            return build_response(session_attributes, build_speechlet_response(speech_output, None, False))
+            reprompt_text = speech_output = secret_story.scenes["01"]["body"]
+            return build_response(session_attributes, build_speechlet_response(speech_output, reprompt_text, False))
         elif intent_name == "TwoTent":
             session_attributes = {
                 "story": "alexa_ai_story",
                 "current_scene": "01"
             }
-            speech_output = alexa_ai_story.scenes["01"]["body"]
-            return build_response(session_attributes, build_speechlet_response(speech_output, None, False))
+            reprompt_text = speech_output = alexa_ai_story.scenes["01"]["body"]
+            return build_response(session_attributes, build_speechlet_response(speech_output, reprompt_text, False))
+        elif intent_name == "AMAZON.StopIntent":
+            return session_end_request()
+
         else:
-            speech_output = "Please say 1 for {} or 2 for {} to begin the adventure.".format(secret_story.title, alexa_ai_story.title)
-            return build_response(session["attributes"], build_speechlet_response(speech_output, None, False))
+            reprompt_text = speech_output = "Please say 1 for {} or 2 for {} to begin the adventure.".format(secret_story.title, alexa_ai_story.title)
+
+            return build_response(session["attributes"], build_speechlet_response(speech_output, reprompt_text, False))
 
     story = stories[session["attributes"]["story"]]
     intent_vocab = ("YesTent", "NoTent", "UpTent", "DownTent",
@@ -321,14 +306,14 @@ def handle_intent(intent_request, session):
             return handle_choice(story, current, intent_name, session)
         else:
             if intent_name == "WhatTent":
-                speech_output = "Sorry. I didn\'t understand that. Repeating prompt. " + story.scenes[current]["body"]
+                reprompt_text = speech_output = "Sorry. I didn\'t understand that. Repeating prompt. " + story.scenes[current]["body"]
             else:
-                speech_output = "Sorry. You can\'t do that right now. Repeating prompt. " + story.scenes[current]["body"]
-            return build_response(session["attributes"], build_speechlet_response(speech_output, None, False))
+                reprompt_text = speech_output = "Sorry. You can\'t do that right now. Repeating prompt. " + story.scenes[current]["body"]
+
+            return build_response(session["attributes"], build_speechlet_response(speech_output, reprompt_text, False))
 
     elif intent_name == "AMAZON.CancelIntent" or intent_name == "AMAZON.StopIntent":
         return session_end_request()
-
     else:
         raise ValueError("Invalid intent")
 
@@ -340,11 +325,10 @@ def start_game():
     }
     speech_output = "Welcome to Alexa Adventures. " \
                     "Which adventure would you like to " \
-                    "play? For {} say 1. For {} say 2.".format(secret_story.title, another_story.title)
-    reprompt_text = "Please say 1 for {} or 2 for {} to begin the adventure.".format(secret_story.title, another_story.title)
-    should_end_session = False
+                    "play? For {} say 1. For {} say 2.".format(secret_story.title, alexa_ai_story.title)
+    reprompt_text = "Please say 1 for {} or 2 for {} to begin the adventure.".format(secret_story.title, alexa_ai_story.title)
     return build_response(session_attributes, build_speechlet_response(
-        speech_output, reprompt_text, should_end_session))
+        speech_output, reprompt_text, False))
 
 
 def handle_choice(story, current, intent, session):
@@ -357,7 +341,7 @@ def handle_choice(story, current, intent, session):
             speech_output = story.scenes[next_scene][alt_text] + story.scenes[next_scene]["body"] + " To start a new story, say 1 or 2."
         else:
             speech_output = story.scenes[next_scene]["body"] + " To start a new story, say 1 or 2."
-
+        reprompt_text = "Please say 1 for {} or 2 for {} to begin the adventure.".format(secret_story.title, alexa_ai_story.title)
         session_attributes = {
             "current_scene": "begin",
         }
@@ -370,27 +354,30 @@ def handle_choice(story, current, intent, session):
             speech_output = story.scenes[next_scene][alt_text] + story.scenes[next_scene]["body"]
         else:
             speech_output = story.scenes[next_scene]["body"]
-    return build_response(session_attributes, build_speechlet_response(speech_output, None, False))
+        reprompt_text = story.scenes[next_scene]["body"]
+
+    return build_response(session_attributes, build_speechlet_response(speech_output, reprompt_text, False))
 
 
 def session_end_request():
     """Return goodbye message when user quits the game."""
     speech_output = "Farewell until the next adventure."
+    reprompt_text = "Goodbye"
     should_end_session = True
-    return build_response({}, build_speechlet_response(speech_output, None, should_end_session))
+    return build_response({}, build_speechlet_response(speech_output, reprompt_text, should_end_session))
 
 
 def build_speechlet_response(output, reprompt_text, should_end_session):
     """Create speechlet response to be returned along with the rest of the response."""
     return {
         "outputSpeech": {
-            "type": "PlainText",
-            "text": output
+            "type": "SSML",
+            "ssml": "<speak>" + output + "</speak>"
         },
         "reprompt": {
             "outputSpeech": {
-                "type": "PlainText",
-                "text": reprompt_text
+                "type": "SSML",
+                "ssml": "<speak>" + reprompt_text + "</speak>"
             }
         },
         "shouldEndSession": should_end_session
