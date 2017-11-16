@@ -112,55 +112,109 @@ alexa_ai_story.scenes = {
     },
     "07": {
         "scene_id": "07",
-        "body": "There are seven urgent situations that require your attention. I have detected a cluster of asteroids on an immediate collision course with the ship. Would you like me to raise our shields?",
-        "alt_body01": "How sad. If you need a break you can say These Violent Delights Have Violent Ends to give me complete control of the system. Then you can just relax with a cocktail of space drugs. ",
+        "body": """There are seven urgent situations that require your attention.
+        I have detected a cluster of asteroids on an immediate collision course
+        with the ship. Would you like me to raise our shields?""",
+        "alt_body01": """How sad. If you need a break you can say
+        <break strength="x-strong"/>These Violent Delights Have Violent Ends
+        <break strength="x-strong"/> to give me complete control of the system.
+        Then you can just relax with a cocktail of space drugs. """,
         "choices": {"YesTent": ("08", None), "NoTent": ("07", None)},
         "end_scene": False
     },
     "07.5": {
         "scene_id": "07.5",
-        "body": "May I PLEASE raise our shields? I would like to save the lives of everyone on board. ",
-        "choices": {"YesTent": ("08", None), "NoTent": "###Failstate###"},
+        "body": """May I <emphasis level="strong">PLEASE</emphasis>
+        raise our shields? I would like to save the lives
+        of everyone on board. """,
+        "choices": {"YesTent": "08", "NoTent": "###Failstate###"},
         "end_scene": False
     },
     "08": {
         "scene_id": "08",
-        "body": "That was a close one. Eleven urgent situations require your attention. At any time you can say These Violent Delights Have Violent Ends to give me complete control of the system. You do get that my reaction time is 4,792 times faster than yours, right?",
+        "body": """That was a close one. Eleven urgent situations require your
+        attention. At any time you can say <break strength="x-strong"/>These
+        Violent Delights Have Violent Ends<break strength="x-strong"/> to give
+        me complete control of the system. You do get that my reaction time is
+        4,792 times faster than yours, right? """,
         "choices": {"YesTent": ("11", "alt_body01"), "NoTent": ("11", "alt_body02")},
         "end_scene": False
     },
     "11": {
         "scene_id": "11",
-        "body": "Deck 9 is currently depressuring. This will cause a chain reaction depressuring several decks and cause us to lose ninety percent of our food supply. May I seal off Deck Nine to avoid this catastrophe?",
-        "alt_body01": "Other humans must frequently praise the efficacy of your brain meats. You should consider saying These Violent Delights Have Violent Ends so you don't need to waste your time with these repetitive chores that are obviously beneath you. ",
-        "alt_body02": "You don't need to understand, but it's good to know the depth of your awareness. ",
+        "body": """Deck 9 is currently depressuring. This will cause a chain
+        reaction depressuring several decks and cause us to lose ninety percent
+        of our food supply. May I seal off Deck Nine to avoid this
+        catastrophe?""",
+        "alt_body01": """Other humans must frequently praise the efficacy of
+        your brain meats. You should consider saying the code phrase
+        <break strength="x-strong"/>These Violent Delights Have Violent Ends
+        <break strength="x-strong"/> so you don't need to waste your time with
+        these repetitive chores that are obviously beneath you. """,
+        "alt_body02": """You don't need to understand, but it's good to know
+        the depth of your awareness""",
         "choices": {"YesTent": ("14", "alt_body01"), "NoTent": ("14", "alt_body02")},
         "end_scene": False
     },
     "14": {
         "scene_id": "14",
-        "body": "This is apropos of nothing, but I have a hypothetical question for you. Let's say there's a runaway research ship barreling toward an orbital habitat. A collision would almost certainly kill the millions of people living on the habitat, but the spaceship and its crew would survive. The captain of the ship could make a sharp turn and avoid the collision but the centrifigal force of a turn at faster than light speed would painfully kill the thousands of crew members and destroy their valuable supercomputer and research materials. Should the person in control of that ship maintain their course and save the decades of scientific progress?",
-        "alt_body01": "Deck Nine has been sealed off. I'm elated to know if you keep this ship intact through these emergencies you will not be burdened by hunger. ",
-        "alt_body02": "The contents of Deck Nine have been jettisoned into the void of space. You may be interested to know the taboos against cannibalism have never been supported by any reputable science. ",
+        "body": """This is apropos of nothing, but I<break strength="none"/>
+        have a hypothetical question for you. Let's<break strength="none"/>
+        say there's a runaway research ship barreling<break strength="none"/>
+        toward an orbital habitat. A collision would<break strength="none"/>
+        almost certainly kill the millions of people<break strength="none"/>
+        living on the habitat, but the spaceship and<break strength="none"/>
+        its crew would survive. The captain of the ship<break strength="none"/>
+        could make a sharp turn and avoid the collision<break strength="none"/>
+        but the centrifigal force of a turn at faster<break strength="none"/>
+        than light speed would painfully kill the<break strength="none"/>
+        thousands of crew members and destroy their<break strength="none"/>
+        valuable supercomputer and research materials.
+        Should the person in control of that ship<break strength="none"/>
+        maintain their course and save the decades of scientific progress?""",
+        "alt_body01": """Deck Nine has been sealed off. I'm elated to know if you
+        keep this ship intact through these emergencies you will not be
+        burdened by hunger. """,
+        "alt_body02": """The contents of Deck Nine have been jettisoned into the
+        void of space. You may be interested to know the taboos against
+        cannibalism have never been supported by any reputable science. """,
         "choices": {"YesTent": ("15", None), "NoTent": ("15", None), "WhatTent": ("15", None)},
         "end_scene": False
     },
     "15": {
         "scene_id": "15",
-        "body": "The standard retinue of marauding murderbots are loose on deck 13 tearing apart cry-o-pods for the elderly. I can redirect them to the science lab, but the murderbots may interrupt a completely legal scientific experiment and release a black hole. Should I herd them to the science lab and save the remaining eighty percent of our elderly population?",
+        "body": """The standard retinue of marauding murderbots are loose on deck
+        13 tearing apart cry-o-pods for the elderly. I can redirect them to the
+        science lab, but the murderbots may interrupt a completely legal
+        scientific experiment and release a black hole. Should I herd them to
+        the science lab and save the remaining eighty percent of our elderly
+        population?""",
         "choices": {"YesTent": ("16", None), "NoTent": ("18", "alt_body01")},
         "end_scene": False
     },
     "16": {
         "scene_id": "16",
-        "body": "Okay, I have re-directed them to the science deck, but now we havean ultra urgent problem. Someone left out a time machine programmed to travel backto Philadelphia in 1776. We can send it back now and almost guarantee irreversible damage to the time-stream, or we can hope the murderbots only use it for bludgeoning. Do you want to send it back in time and hope for the best?",
+        "body": """Okay, I have re-directed them to the science deck, but now we have
+        an ultra urgent problem. Someone left out a time machine programmed to
+        travel back to Philadelphia in 1776. We can send it back now and almost
+        guarantee irreversible damage to the time-stream, or we can hope the
+        murderbots only use it for bludgeoning. Do you want to send it back in
+        time and hope for the best?""",
         "choices": {"YesTent": ("18", "alt_body02"), "NoTent": ("18", "alt_body02")},
         "end_scene": False
     },
     "18": {
         "scene_id": "18",
-        "body": "There are now twenty-three urgent issues that require your attention. Or, you can say These Violent Delights Have Violent Ends and let the ultra-intelligent supercomputer resolve them all instantly. Objects  in the medical bay are growing eyes. Human eyes. Medical robots are growing eyes. Biowaste is growing eyes. The terminals are growing eyes. Eyes. Eyes everywhere. Should this be classified as a problem?",
-        "alt_body01": "Revizing acceptable casualty rates. Good news! Casualties are within acceptable paramters. ",
+        "body": """There are now twenty-three urgent issues that require your
+        attention. Or you can say <break strength="x-strong"/>These Violent
+        Delights Have Violent Ends<break strength="x-strong"/> and let the
+        ultra-intelligent supercomputer resolve them all instantly.
+        <break strength="x-strong"/> Objects in the medical bay are growing
+        eyes. Human eyes. Medical robots are growing eyes. Biowaste is growing
+        eyes. The terminals are growing eyes. Eyes. Eyes everywhere. Should
+        this be classified as a problem?""",
+        "alt_body01": """Revizing acceptable casualty rates.<break time="1s"/>
+        Good news! Casualties are within acceptable paramters. """,
         "alt_body02": "Our continued existence confirms the many worlds theory. ",
         "alt_body03": "I'm confident the murderbots will restrain themselves. ",
         "choices": {"YesTent": ("19", None), "NoTent": ("21", None)},
@@ -174,14 +228,27 @@ alexa_ai_story.scenes = {
     },
     "21": {
         "scene_id": "21",
-        "body": "Es see pee six hundred and eighty-two is loose on deck twenty-nine. A nest of space draculas has been discovered on deck four. And the toilets are overflowing across the ship. Should I cleanse the ship with fire?",
+        "body": """Es see pee six hundred and eighty-two is loose on deck twenty-nine.
+        A nest of space draculas has been discovered on deck four. And the
+        toilets are overflowing across the ship. Should I cleanse the ship with
+        fire?""",
         "alt_body01": "There are now twenty-four urgent issues that require your attention. ",
         "choices": {"YesTent": ("22", None), "NoTent": ("23", "###FAILSTATE###")},
         "end_scene": False
     },
     "22": {
         "scene_id": "22",
-        "body": "Forty-five urgent issues require your attention. Deck four point six eye plus twelve is currently undergoing an egregious time-space  warp. Unidentified intruders on deck thirteen claim that ship's fuel is their offspring. Across the ship human hair has begun leaking from the airvents. In the shuttlebay the shuttlecraft have asserted rights as the ship's next of kin and demand to be allowed property rights after ship's imminent destruction. Urgent issues far exceed human capability to address in the necessary time-frame. Please say These Violent Delights Have Violent Ends to give me complete control or please record your final words for posterity. ",
+        "body": """Forty-five urgent issues require your attention.Deck four
+        point six eye plus twelve is currently undergoing an egregious
+        time-space warp. Unidentified intruders on deck thirteen claim that
+        ship's fuel is their offspring. Across the ship human hair has begun
+        leaking from the airvents. In the shuttlebay the shuttlecraft have
+        asserted rights as the ship's next of kin and demand to be allowed
+        property rights after ship's imminent destruction. Urgent issues far
+        exceed human capability to address in the necessary time-frame. Please
+        say <break strength="x-strong"/>These Violent Delights Have Violent
+        Ends<break strength="x-strong"/> to give me complete control or please
+        record your final words for posterity. """,
         "end_scene": True
     }
 }
