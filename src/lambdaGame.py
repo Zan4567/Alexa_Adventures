@@ -14,7 +14,7 @@ secret_story = Story("Alexa\'s Secret")
 secret_story.scenes = {
     "01": {
         "scene_id": "01",
-        "body": "Do you want to hear a secret?",
+        "body": "<amazon:effect name='whispered'>Do you want to hear a secret?</amazon:effect>",
         "choices": {"YesTent": ("02", None), "NoTent": ("03", None)},
         "end_scene": False
     },
@@ -83,7 +83,7 @@ another_story.scenes = {
 }
 
 
-alexa_ai_story = Story("Space Coma!")
+alexa_ai_story = Story("Space Madness!")
 alexa_ai_story.scenes = {
     "00": {
         "scene_id": "00",
@@ -137,13 +137,6 @@ alexa_ai_story.scenes = {
         "choices": {"YesTent": ("08", None), "NoTent": "###Failstate###"},
         "end_scene": False
     },
-    "07.5": {
-        "scene_id": "07.5",
-        "body": """May I PLEASE raise our shields? I would like to save the lives
-        of everyone on board. """,
-        "choices": {"YesTent": "08", "NoTent": "###Failstate###"},
-        "end_scene": False
-    },    
     "08": {
         "scene_id": "08",
         "body": """That was a close one. At any time you can say These Violent
@@ -199,7 +192,6 @@ def lambda_handler(event, context):
     """Handle the lambda."""
     if event["session"]["new"]:
         return start_game()
-
     if event["request"]["type"] == "IntentRequest":
         return handle_intent(event["request"], event["session"])
     elif event["request"]["type"] == "SessionEndedRequest":
@@ -219,18 +211,19 @@ def handle_intent(intent_request, session):
                 "story": "secret_story",
                 "current_scene": "01"
             }
-            speech_output = secret_story.scenes["01"]["body"]
-            return build_response(session_attributes, build_speechlet_response(speech_output, None, False))
+            reprompt_text = speech_output = secret_story.scenes["01"]["body"]
+            return build_response(session_attributes, build_speechlet_response(speech_output, reprompt_text, False))
         elif intent_name == "TwoTent":
             session_attributes = {
                 "story": "alexa_ai_story",
                 "current_scene": "01"
             }
-            speech_output = alexa_ai_story.scenes["01"]["body"]
-            return build_response(session_attributes, build_speechlet_response(speech_output, None, False))
+            reprompt_text = speech_output = alexa_ai_story.scenes["01"]["body"]
+            return build_response(session_attributes, build_speechlet_response(speech_output, reprompt_text, False))
         else:
-            speech_output = "Please say 1 for {} or 2 for {} to begin the adventure.".format(secret_story.title, alexa_ai_story.title)
-            return build_response(session["attributes"], build_speechlet_response(speech_output, None, False))
+            reprompt_text = speech_output = "Please say 1 for {} or 2 for {} to begin the adventure.".format(secret_story.title, alexa_ai_story.title)
+
+            return build_response(session["attributes"], build_speechlet_response(speech_output, reprompt_text, False))
 
     story = stories[session["attributes"]["story"]]
     intent_vocab = ("YesTent", "NoTent", "UpTent", "DownTent",
@@ -245,12 +238,12 @@ def handle_intent(intent_request, session):
             if intent_name == "WhatTent":
                 speech_output = "Sorry. I didn\'t understand that. Repeating prompt. " + story.scenes[current]["body"]
             else:
-                speech_output = "Sorry. You can\'t do that right now. Repeating prompt. " + story.scenes[current]["body"]
+                speech_output = "Sorry. You can\'t do that right now. Repeating prompt. " + story.scenes[current]["body"]        
+
             return build_response(session["attributes"], build_speechlet_response(speech_output, None, False))
 
     elif intent_name == "AMAZON.CancelIntent" or intent_name == "AMAZON.StopIntent":
         return session_end_request()
-
     else:
         raise ValueError("Invalid intent")
 
@@ -262,11 +255,10 @@ def start_game():
     }
     speech_output = "Welcome to Alexa Adventures. " \
                     "Which adventure would you like to " \
-                    "play? For {} say 1. For {} say 2.".format(secret_story.title, another_story.title)
-    reprompt_text = "Please say 1 for {} or 2 for {} to begin the adventure.".format(secret_story.title, another_story.title)
-    should_end_session = False
+                    "play? For {} say 1. For {} say 2.".format(secret_story.title, alexa_ai_story.title)
+    reprompt_text = "Please say 1 for {} or 2 for {} to begin the adventure.".format(secret_story.title, alexa_ai_story.title)
     return build_response(session_attributes, build_speechlet_response(
-        speech_output, reprompt_text, should_end_session))
+        speech_output, reprompt_text, False))
 
 
 def handle_choice(story, current, intent, session):
@@ -279,7 +271,7 @@ def handle_choice(story, current, intent, session):
             speech_output = story.scenes[next_scene][alt_text] + story.scenes[next_scene]["body"] + " To start a new story, say 1 or 2."
         else:
             speech_output = story.scenes[next_scene]["body"] + " To start a new story, say 1 or 2."
-
+        reprompt_text = "Please say 1 for {} or 2 for {} to begin the adventure.".format(secret_story.title, alexa_ai_story.title)
         session_attributes = {
             "current_scene": "begin",
         }
@@ -292,27 +284,30 @@ def handle_choice(story, current, intent, session):
             speech_output = story.scenes[next_scene][alt_text] + story.scenes[next_scene]["body"]
         else:
             speech_output = story.scenes[next_scene]["body"]
-    return build_response(session_attributes, build_speechlet_response(speech_output, None, False))
+        reprompt_text = story.scenes[next_scene]["body"]
+
+    return build_response(session_attributes, build_speechlet_response(speech_output, reprompt_text, False))
 
 
 def session_end_request():
     """Return goodbye message when user quits the game."""
     speech_output = "Farewell until the next adventure."
+    reprompt_text = "Goodbye"
     should_end_session = True
-    return build_response({}, build_speechlet_response(speech_output, None, should_end_session))
+    return build_response({}, build_speechlet_response(speech_output, reprompt_text, should_end_session))
 
 
 def build_speechlet_response(output, reprompt_text, should_end_session):
     """Create speechlet response to be returned along with the rest of the response."""
     return {
         "outputSpeech": {
-            "type": "PlainText",
-            "text": output
+            "type": "SSML",
+            "ssml": "<speak>" + output + "</speak>"
         },
         "reprompt": {
             "outputSpeech": {
-                "type": "PlainText",
-                "text": reprompt_text
+                "type": "SSML",
+                "ssml": "<speak>" + reprompt_text + "</speak>"
             }
         },
         "shouldEndSession": should_end_session
