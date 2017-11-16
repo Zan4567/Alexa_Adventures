@@ -1,0 +1,40 @@
+StartTent start
+StartTent play
+StartTent start game
+StartTent play game
+YesTent yes
+YesTent yeah
+YesTent sure
+YesTent okay
+NoTent no
+NoTent nope
+NoTent nah
+UpTent up
+UpTent go up
+DownTent down
+DownTent go down
+LeftTent left
+LeftTent go left
+RightTent right
+RightTent go right
+NorthTent north
+NorthTent go north
+SouthTent south
+SouthTent go south
+EastTent east
+EastTent go east
+WestTent west
+WestTent go west
+ForwardTent forward
+ForwardTent go forward
+BackTent back
+BackTent go back
+OneTent one
+TwoTent two
+WhatTent aopwihfv
+WhatTent qwerty
+WhatTent gazorpazorp
+WhatTent zxcvbnm
+WhatTent xyzyxx
+WhatTent kpfdashg
+WhatTent dgrehszc
