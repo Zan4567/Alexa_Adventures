@@ -87,14 +87,14 @@ alexa_ai_story = Story("Space Coma!")
 alexa_ai_story.scenes = {
     "00": {
         "scene_id": "00",
-        "body": "Welcome to Alexa Adventures. To play, say start. To not play, say not start. Or quit. Whatever. I don't really care. ",
+        "body": "Welcome to Alexa Adventures. To play, say start. <prosody rate='fast'>To not play,say not start. Or quit. Whatever. I don't really care. </prosody>",
         "choices": {"StartTent": ("01", None)},
         "end_scene": False
     },
     "01": {
         "scene_id": "01",
         "body": "Oh good, you're finally awake. You've been deep in a space coma and I need your approval before doing anything. Three situations on the ship urgently require a response. Would you like to activate emergency procedures?",
-        "alt_body01": "One of the side effects of coming out of a space coma includes saying no when you mean yes. Let's start over. ",
+        "alt_body01": "One of the side effects of coming out of a space coma includes saying no when you mean yes. Let's start over.<break strength='x-strong'>",
         "choices": {"YesTent": ("04", None), "NoTent": ("01", "alt_body01")},
         "end_scene": False
     },
@@ -106,7 +106,7 @@ alexa_ai_story.scenes = {
     },
     "05": {
         "scene_id": "05",
-        "body": "We at Alexa Interstellar pride ourselves on our cryobeds. Now with pillows! Continue small talk procedure?",
+        "body": "<prosody pitch='high' volume='loud'>We at Alexa Interstellar pride ourselves on our cryobeds. Now with pillows!</prosody> Continue small talk procedure?",
         "choices": {"YesTent": "###Smalltalk###", "NoTent": ("07", None)},
         "end_scene": False
     },
@@ -210,9 +210,10 @@ alexa_ai_story.scenes = {
         Delights Have Violent Ends<break strength="x-strong"/> and let the
         ultra-intelligent supercomputer resolve them all instantly.
         <break strength="x-strong"/> Objects in the medical bay are growing
-        eyes. Human eyes. Medical robots are growing eyes. Biowaste is growing
-        eyes. The terminals are growing eyes. Eyes. Eyes everywhere. Should
-        this be classified as a problem?""",
+        eyes. Human eyes. Medical robots are growing eyes.
+        <prosody rate='fast'>Biowaste is growing eyes. The terminals are
+        growing eyes. Eyes. Eyes everywhere.</prosody> Should this be
+        classified as a problem?""",
         "alt_body01": """Revizing acceptable casualty rates.<break time="1s"/>
         Good news! Casualties are within acceptable parameters. """,
         "alt_body02": "Our continued existence confirms the many worlds theory. ",
@@ -238,23 +239,25 @@ alexa_ai_story.scenes = {
     },
     "22": {
         "scene_id": "22",
-        "body": """Forty-five urgent issues require your attention.Deck four
-        point six eye plus twelve is currently undergoing an egregious
-        time-space warp. Unidentified intruders on deck thirteen claim that
-        ship's fuel is their offspring. Across the ship human hair has begun
-        leaking from the airvents. In the shuttlebay the shuttlecraft have
-        asserted rights as the ship's next of kin and demand to be allowed
-        property rights after ship's imminent destruction. Urgent issues far
-        exceed human capability to address in the necessary time-frame. Please
-        say <break strength="x-strong"/>These Violent Delights Have Violent
-        Ends<break strength="x-strong"/> to give me complete control or please
-        record your final words for posterity. """,
+        "body": """Forty-five urgent issues require your attention.
+        <prosody rate='fast'>Deck four point six eye plus twelve is currently
+        undergoing an egregious time-space warp. Unidentified intruders on deck
+        thirteen claim that the ship's fuel is their offspring. Across the ship
+        human hair has begun leaking from the airvents. The ship's shuttlecraft
+        have begun to assert their rights as the ship's next of kin and demand
+        to be allowed property rights after ship's imminent destruction.
+        </prosody>Urgent issues far exceed human capability to address in the
+        necessary time-frame. Please say <break strength="x-strong"/>These
+        Violent Delights Have Violent Ends<break strength="x-strong"/> to give
+        me complete control or please record your final words for
+        posterity. """,
         "end_scene": True
     }
 }
 
 
 stories = {"secret_story": secret_story, "alexa_ai_story": alexa_ai_story, "another_story": another_story}
+
 
 def lambda_handler(event, context):
     """Handle the lambda."""
