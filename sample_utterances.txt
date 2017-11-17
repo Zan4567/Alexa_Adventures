@@ -1,7 +1,3 @@
-StartTent start
-StartTent play
-StartTent start game
-StartTent play game
 YesTent yes
 YesTent yeah
 YesTent sure
@@ -29,12 +25,29 @@ ForwardTent forward
 ForwardTent go forward
 BackTent back
 BackTent go back
+ZeroTent zeroes
+ZeroTent zero
 OneTent one
+OneTent ones
 TwoTent two
 WhatTent aopwihfv
+WhatTent dunno
+WhatTent i dont know
+WhatTent dont know
 WhatTent qwerty
 WhatTent gazorpazorp
 WhatTent zxcvbnm
 WhatTent xyzyxx
 WhatTent kpfdashg
 WhatTent dgrehszc
+WhatTent hyjyjyjyj
+WhatTent bbwetry
+SecretTent alpha lambda xray
+RepeatTent what
+RepeatTent can you repeat that
+RepeatTent repeat
+RepeatTent repeat that
+RepeatTent say that again
+RepeatTent say again
+AfternoonDelightTent afternoon delight
+AfternoonDelightTent sky rockets in flight

@@ -1,7 +1,7 @@
 {
   "intents": [
     {
-      "intent": "StartTent"
+      "intent": "AfternoonDelightTent"
     },
     {
       "intent": "YesTent"
@@ -40,6 +40,9 @@
       "intent": "BackTent"
     },
     {
+      "intent": "ZeroTent"
+    },
+    {
       "intent": "OneTent"
     },
     {
@@ -53,6 +56,9 @@
     },
     {
       "intent": "AMAZON.CancelIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
     }
   ]
 }
