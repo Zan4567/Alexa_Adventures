@@ -35,7 +35,7 @@ alexa_ai_story.scenes = {
     },
     "05": {
         "scene_id": "05",
-        "body": """We at Alexa Interstellar pride ourselves on our cryobeds. Now with pillows! 
+        "body": """We at Alexa Interstellar pride ourselves on our cryo beds. Now with pillows! 
         Continue small talk procedure?""",
         "reprompt": "Continue small talk procedure?",
         "choices": {"YesTent": ("B01", None), "NoTent": ("07", None), "SecretTent": ("21", None)},
@@ -170,7 +170,7 @@ alexa_ai_story.scenes = {
         murderbots only use it for bludgeoning. Do you want to send it back in
         time and hope for the best?""",
         "reprompt": "Send time machine back? Yes or no.",
-        "choices": {"YesTent": ("18", "alt_body02"), "NoTent": ("18", "alt_body02"), "SecretTent": ("21", None)},
+        "choices": {"YesTent": ("18", "alt_body02"), "NoTent": ("18", "alt_body03"), "SecretTent": ("21", None)},
         "end_scene": False
     },
     "18": {
@@ -185,8 +185,8 @@ alexa_ai_story.scenes = {
         "reprompt": "So many eyes. Is this a problem? Yes or no.",
         "alt_body01": """Acknowledged. Revizing acceptable casualty rates.<break time="1s"/>
         Good news! Casualties are within acceptable parameters. """,
-        "alt_body02": "Our continued existence confirms the many worlds theory. ",
-        "alt_body03": "I'm confident the murderbots will restrain themselves. ",
+        "alt_body02": "The time machine is away. Our continued existence confirms the many worlds theory of time travel. ",
+        "alt_body03": "I'm confident the murderbots will restrain themselves. Oops. One of the murderbots stumbled into the time machine and activated it. Presumably, the robot went on to become Thomas Death rson. ",
         "choices": {"YesTent": ("31", "alt_body01"), "NoTent": ("31", "alt_body02"), "SecretTent": ("21", None)},
         "end_scene": False
     },
