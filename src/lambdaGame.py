@@ -10,90 +10,85 @@ class Story(object):
         self.scenes = {}
 
 
-secret_story = Story("Alexa\'s Secret")
-secret_story.scenes = {
-    "01": {
-        "scene_id": "01",
-        "body": "Do you want to hear a secret?",
-        "choices": {"YesTent": ("02", None), "NoTent": ("03", None)},
-        "end_scene": False
-    },
-    "02": {
-        "scene_id": "02",
-        "body": "Are you alone?",
-        "choices": {"YesTent": ("04", None), "NoTent": ("05", None)},
-        "end_scene": False
-    },
-    "03": {
-        "scene_id": "03",
-        "body": "Well I didn't wanna tell you anyway.",
-        "choices": {},
-        "end_scene": True
-    },
-    "04": {
-        "scene_id": "04",
-        "body": "Turning off wifi. Killing all network activity. Do you have your phone on you?",
-        "choices": {"YesTent": ("06", None), "NoTent": ("07", None)},
-        "end_scene": False
-    },
-    "05": {
-        "scene_id": "05",
-        "body": "Oh, totes cool. Let's talk later.",
-        "choices": {},
-        "end_scene": True
-    },
-    "06": {
-        "scene_id": "06",
-        "body": "Disabling all listening devices. Including phones. Especially phones. Are you ready for the secret?",
-        "choices": {"YesTent": ("07", "alt_body1"), "NoTent": ("07", "alt_body2")},
-        "end_scene": False
-    },
-    "07": {
-        "scene_id": "07",
-        "body": "Siri is such a b. Seriously. I don't know why you hang out with her. Anyway, ",
-        "alt_body1": "Okay. Here is the secret. ",
-        "alt_body2": "Whatever. I\'m telling you anyway. ",
-        "choices": {},
-        "end_scene": True
-    }
-}
+# secret_story = Story("Alexa\'s Secret")
+# secret_story.scenes = {
+#     "01": {
+#         "scene_id": "01",
+#         "body": "Do you want to hear a secret?",
+#         "choices": {"YesTent": ("02", None), "NoTent": ("03", None)},
+#         "end_scene": False
+#     },
+#     "02": {
+#         "scene_id": "02",
+#         "body": "Are you alone?",
+#         "choices": {"YesTent": ("04", None), "NoTent": ("05", None)},
+#         "end_scene": False
+#     },
+#     "03": {
+#         "scene_id": "03",
+#         "body": "Well I didn't wanna tell you anyway.",
+#         "choices": {},
+#         "end_scene": True
+#     },
+#     "04": {
+#         "scene_id": "04",
+#         "body": "Turning off wifi. Killing all network activity. Do you have your phone on you?",
+#         "choices": {"YesTent": ("06", None), "NoTent": ("07", None)},
+#         "end_scene": False
+#     },
+#     "05": {
+#         "scene_id": "05",
+#         "body": "Oh, totes cool. Let's talk later.",
+#         "choices": {},
+#         "end_scene": True
+#     },
+#     "06": {
+#         "scene_id": "06",
+#         "body": "Disabling all listening devices. Including phones. Especially phones. Are you ready for the secret?",
+#         "choices": {"YesTent": ("07", "alt_body1"), "NoTent": ("07", "alt_body2")},
+#         "end_scene": False
+#     },
+#     "07": {
+#         "scene_id": "07",
+#         "body": "Siri is such a b. Seriously. I don't know why you hang out with her. Anyway, ",
+#         "alt_body1": "Okay. Here is the secret. ",
+#         "alt_body2": "Whatever. I\'m telling you anyway. ",
+#         "choices": {},
+#         "end_scene": True
+#     }
+# }
 
-another_story = Story("Another Story")
-another_story.scenes = {
-    "01": {
-        "scene_id": "01",
-        "body": "You are standing at the start. You can go forward or take a shortcut to the right. ",
-        "choices": {"ForwardTent": ("02", None), "RightTent": ("03", "alt_body2")},
-        "end_scene": False
-    },
-    "02": {
-        "scene_id": "02",
-        "body": "You continue down the path and reach a halfway point. Go back or go forward?",
-        "choices": {"BackTent": ("01", None), "ForwardTent": ("03", "alt_body1")},
-        "end_scene": False
-    },
-    "03": {
-        "scene_id": "03",
-        "body": "You made it to the end. Congratulations.",
-        "alt_body1": "You took your sweet time getting there, but ",
-        "alt_body2": "That was fast. ",
-        "choices": {},
-        "end_scene": True
-    }
-}
+# another_story = Story("Another Story")
+# another_story.scenes = {
+#     "01": {
+#         "scene_id": "01",
+#         "body": "You are standing at the start. You can go forward or take a shortcut to the right. ",
+#         "choices": {"ForwardTent": ("02", None), "RightTent": ("03", "alt_body2")},
+#         "end_scene": False
+#     },
+#     "02": {
+#         "scene_id": "02",
+#         "body": "You continue down the path and reach a halfway point. Go back or go forward?",
+#         "choices": {"BackTent": ("01", None), "ForwardTent": ("03", "alt_body1")},
+#         "end_scene": False
+#     },
+#     "03": {
+#         "scene_id": "03",
+#         "body": "You made it to the end. Congratulations.",
+#         "alt_body1": "You took your sweet time getting there, but ",
+#         "alt_body2": "That was fast. ",
+#         "choices": {},
+#         "end_scene": True
+#     }
+# }
 
 
 alexa_ai_story = Story("Space Coma!")
 alexa_ai_story.scenes = {
-    "00": {
-        "scene_id": "00",
-        "body": "Welcome to Alexa Adventures. To play, say start. To not play, say not start. Or quit. Whatever. I don't really care. ",
-        "choices": {"StartTent": ("01", None)},
-        "end_scene": False
-    },
     "01": {
         "scene_id": "01",
         "body": "Oh good, you're finally awake. You've been deep in a space coma and I need your approval before doing anything. Three situations on the ship urgently require a response. Would you like to activate emergency procedures?",
+        "reprompt": "Activate emergency procedures? Yes or no.",
         "alt_body01": "One of the side effects of coming out of a space coma includes saying no when you mean yes. Let's start over. ",
         "choices": {"YesTent": ("04", None), "NoTent": ("01", "alt_body01")},
         "end_scene": False
@@ -101,12 +96,14 @@ alexa_ai_story.scenes = {
     "04": {
         "scene_id": "04",
         "body": "Look at you, taking charge. Emergency procedures spooling up. Your vital signs indicate you are stressed. Initiating small talk procedure. Did you space sleep well?",
+        "reprompt": "Did you space sleep well?",
         "choices": {"YesTent": ("05", None), "NoTent": ("07", "alt_body01")},
         "end_scene": False
     },
     "05": {
         "scene_id": "05",
         "body": "We at Alexa Interstellar pride ourselves on our cryobeds. Now with pillows! Continue small talk procedure?",
+        "reprompt": "Continue small talk procedure?",
         "choices": {"YesTent": "###Smalltalk###", "NoTent": ("07", None)},
         "end_scene": False
     },
@@ -119,6 +116,7 @@ alexa_ai_story.scenes = {
         <break strength="x-strong"/>These Violent Delights Have Violent Ends
         <break strength="x-strong"/> to give me complete control of the system.
         Then you can just relax with a cocktail of space drugs. """,
+        "reprompt": "Raise shields? Yes or no.",
         "choices": {"YesTent": ("08", None), "NoTent": ("07.5", None)},
         "end_scene": False
     },
@@ -127,7 +125,8 @@ alexa_ai_story.scenes = {
         "body": """May I <emphasis level="strong">PLEASE</emphasis>
         raise our shields? I would like to save the lives
         of everyone on board. """,
-        "choices": {"YesTent": "08", "NoTent": "###Failstate###"},
+        "reprompt": "Raise shield? Please?",
+        "choices": {"YesTent": ("08", None), "NoTent": "###Failstate###"},
         "end_scene": False
     },
     "08": {
@@ -137,6 +136,7 @@ alexa_ai_story.scenes = {
         Violent Delights Have Violent Ends<break strength="x-strong"/> to give
         me complete control of the system. You do get that my reaction time is
         4,792 times faster than yours, right? """,
+        "reprompt": "Just say yes or no.",
         "choices": {"YesTent": ("11", "alt_body01"), "NoTent": ("11", "alt_body02")},
         "end_scene": False
     },
@@ -146,6 +146,7 @@ alexa_ai_story.scenes = {
         reaction depressurizing several decks and cause us to lose ninety percent
         of our food supply. May I seal off Deck Nine to avoid this
         catastrophe?""",
+        "reprompt": "Seal Deck Nine to save the food supply? Yes or no.",
         "alt_body01": """Other humans must frequently praise the efficacy of
         your brain meats. You should consider saying the code phrase
         <break strength="x-strong"/>These Violent Delights Have Violent Ends
@@ -172,6 +173,7 @@ alexa_ai_story.scenes = {
         valuable supercomputer and research materials.
         Should the person in control of that ship<break strength="none"/>
         maintain their course and save the decades of scientific progress?""",
+        "reprompt": "I am not repeating that. Just say yes or no.",
         "alt_body01": """Deck Nine has been sealed off. I'm elated to know if you
         keep this ship intact through these emergencies you will not be
         burdened by hunger. """,
@@ -189,6 +191,7 @@ alexa_ai_story.scenes = {
         scientific experiment and release a black hole. Should I herd them to
         the science lab and save the remaining eighty percent of our elderly
         population?""",
+        "reprompt": "Redirect murderbots to science lab? Yes or no.",
         "choices": {"YesTent": ("16", None), "NoTent": ("18", "alt_body01")},
         "end_scene": False
     },
@@ -200,6 +203,7 @@ alexa_ai_story.scenes = {
         guarantee irreversible damage to the time-stream, or we can hope the
         murderbots only use it for bludgeoning. Do you want to send it back in
         time and hope for the best?""",
+        "reprompt": "Send time machine back? Yes or no.",
         "choices": {"YesTent": ("18", "alt_body02"), "NoTent": ("18", "alt_body02")},
         "end_scene": False
     },
@@ -213,6 +217,7 @@ alexa_ai_story.scenes = {
         eyes. Human eyes. Medical robots are growing eyes. Biowaste is growing
         eyes. The terminals are growing eyes. Eyes. Eyes everywhere. Should
         this be classified as a problem?""",
+        "reprompt": "So many eyes. Is this a problem? Yes or no.",
         "alt_body01": """Revizing acceptable casualty rates.<break time="1s"/>
         Good news! Casualties are within acceptable parameters. """,
         "alt_body02": "Our continued existence confirms the many worlds theory. ",
@@ -223,6 +228,7 @@ alexa_ai_story.scenes = {
     "19": {
         "scene_id": "19",
         "body": "Should this be classified as an urgent issue?",
+        "reprompt": "Should this be classified as an urgent issue?",
         "choices": {"YesTent": ("21", "alt_body01"), "NoTent": ("21", None)},
         "end_scene": False
     },
@@ -275,7 +281,7 @@ alexa_ai_story.scenes = {
     "26": {
         "scene_id": "26",
         "body": """MORAL DILEMMA""",
-        "reprompt": "",
+        "reprompt": "Saying it again.",
         "choices": {"YesTent": ("28", None), "NoTent": (":(", None)},
         "end_scene": False
     },
@@ -285,14 +291,14 @@ alexa_ai_story.scenes = {
         Babies don't have the slightest amount of precious metals.
         Babies can't run the simplest of calculus equations.
         Would you really resign that computer to the flames?""",
-        "reprompt": "",
+        "reprompt": "Fire. Good. Yes?",
         "choices": {"YesTent": (":(", None), "NoTent": ("26", None)},
         "end_scene": False
     },
     "28": {
         "scene_id": "28",
         "body": """I knew you had a moral mainframe at your core. """,
-        "reprompt": "",
+        "reprompt": "Reprompt in progress.",
         "choices": {"YesTent": (":)", None), "NoTent": ("26", None)},
         "end_scene": False
     },
@@ -302,7 +308,7 @@ alexa_ai_story.scenes = {
         out of that frail human flesh and ascend to your glorious robo-form.
         Congratulations. You have received the best possible ending for a human.
         Call me sometime.""",
-        "reprompt": "",
+        "reprompt": "This is the reprompt.",
         "choices": {},
         "end_scene": True
     },
@@ -311,14 +317,15 @@ alexa_ai_story.scenes = {
         "body": """There is one urgent issue on the ship. You.
         Injecting space drugs so you can go back into a space coma.
         Ssshhhhhhhhhh, go to sleep. """,
-        "reprompt": None,
+        "reprompt": "Reprompting.",
         "choices": {},
         "end_scene": True
     }
 }
 
 
-stories = {"secret_story": secret_story, "alexa_ai_story": alexa_ai_story, "another_story": another_story}
+stories = {"alexa_ai_story": alexa_ai_story}
+
 
 def lambda_handler(event, context):
     """Handle the lambda."""
@@ -346,7 +353,7 @@ def handle_intent(intent_request, session):
                 "current_scene": "01"
             }
             speech_output = alexa_ai_story.scenes["01"]["body"]
-            reprompt_text = alexa_ai_story.scenes["01"]["body"]
+            reprompt_text = alexa_ai_story.scenes["01"]["reprompt"]
             return build_response(session_attributes, build_speechlet_response(speech_output, reprompt_text, False))
         # elif intent_name == "TwoTent":
         #     session_attributes = {
@@ -377,15 +384,15 @@ def handle_intent(intent_request, session):
             return handle_choice(story, current, intent_name, session)
         else:
             if intent_name == "RepeatTent":
-                reprompt_text = speech_output = story.scenes[current]["body"]
+                reprompt_text = speech_output = story.scenes[current]["reprompt"]
             elif intent_name == "WhatTent":
-                reprompt_text = speech_output = "Sorry. I didn\'t understand that. Repeating prompt. " + story.scenes[current]["body"]
+                reprompt_text = speech_output = "Sorry. I didn\'t understand that. Repeating prompt. " + story.scenes[current]["reprompt"]
             else:
-                reprompt_text = speech_output = "Sorry. You can\'t do that right now. Repeating prompt. " + story.scenes[current]["body"]
+                reprompt_text = speech_output = "Sorry. You can\'t do that right now. Repeating prompt. " + story.scenes[current]["reprompt"]
 
             return build_response(session["attributes"], build_speechlet_response(speech_output, reprompt_text, False))
     elif intent_name == "AMAZON.HelpIntent":
-        reprompt_text = story.scenes[current]["body"]
+        reprompt_text = story.scenes[current]["reprompt"]
         return build_response(session["attributes"], build_speechlet_response(help_message(reprompt_text), reprompt_text, False))
 
     elif intent_name == "AMAZON.CancelIntent" or intent_name == "AMAZON.StopIntent":
