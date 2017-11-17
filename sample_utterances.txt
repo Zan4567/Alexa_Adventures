@@ -1,7 +1,3 @@
-StartTent start
-StartTent play
-StartTent start game
-StartTent play game
 YesTent yes
 YesTent yeah
 YesTent sure
@@ -38,3 +34,8 @@ WhatTent zxcvbnm
 WhatTent xyzyxx
 WhatTent kpfdashg
 WhatTent dgrehszc
+SecretTent these violent delights have violent ends
+RepeatTent repeat
+RepeatTent repeat that
+RepeatTent say that again
+RepeatTent say again

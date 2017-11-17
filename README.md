@@ -19,7 +19,10 @@ Be aware that certain choices you make have the potential to end the current adv
 #### Environment Setup:
 
 In order to contribute to Alexa Adventures, your environment must be set up with certain tools and resources, including: pytest, pytest-cov, and tox(which must be configured to run both Python 2.7 and Python 3.6). The steps to create an environment and install the necessary tools are as follows:
-1. Open your command prompt and clone down the Alexa Adventures repository by typing ```$ git clone https://github.com/Zan4567/Alexa_Adventures```.
+1. Open your command prompt and clone down the Alexa Adventures repository by typing ```git clone https://github.com/Zan4567/Alexa_Adventures```.
+2. Navigate into the Alexa_Adventures repo you just cloned down by typing ```cd Alexa_Adventures/```.
+3. Once you've changed directories into the Alexa_Adventures repository, you must set up a virtual environment and activate it. To do this, type ```python3 -m venv ENV```, followed by ```source ENV/bin/activate```. If the virtual environment was set up and activated correctly, your command prompt should now look similar to this: ```(ENV) user@computer $:```, where (ENV) _Note that 'ENV' refers to the name of your virtual environment and can be any name you choose._
+4.
 
 ## Authors:
 _Click the author's name to check out their Github!_

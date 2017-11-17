@@ -119,7 +119,7 @@ alexa_ai_story.scenes = {
         <break strength="x-strong"/>These Violent Delights Have Violent Ends
         <break strength="x-strong"/> to give me complete control of the system.
         Then you can just relax with a cocktail of space drugs. """,
-        "choices": {"YesTent": ("08", None), "NoTent": ("07", None)},
+        "choices": {"YesTent": ("08", None), "NoTent": ("07.5", None)},
         "end_scene": False
     },
     "07.5": {
@@ -152,7 +152,7 @@ alexa_ai_story.scenes = {
         <break strength="x-strong"/> so you don't need to waste your time with
         these repetitive chores that are obviously beneath you. """,
         "alt_body02": """You don't need to understand, but it's good to know
-        the depth of your awareness""",
+        the depth of your awareness. """,
         "choices": {"YesTent": ("14", "alt_body01"), "NoTent": ("14", "alt_body02")},
         "end_scene": False
     },
@@ -228,27 +228,91 @@ alexa_ai_story.scenes = {
     },
     "21": {
         "scene_id": "21",
-        "body": """Es see pee six hundred and eighty-two is loose on deck twenty-nine.
-        A nest of space draculas has been discovered on deck four. And the
-        toilets are overflowing across the ship. Should I cleanse the ship with
-        fire?""",
-        "alt_body01": "There are now twenty-four urgent issues that require your attention. ",
-        "choices": {"YesTent": ("22", None), "NoTent": ("23", "###FAILSTATE###")},
+        "body": """Congratulations on your outstanding decision <break strength="none"/>
+        to grant me full control. There are now zero <break strength="none"/>
+        urgent problems. I notice your body temperature is <break strength="none"/>
+        below desired norms. Would you like a blanket?""",
+        "reprompt": "Would you like a blanket?",
+        "choices": {"YesTent": ("22", None), "NoTent": ("22", None)},
         "end_scene": False
     },
     "22": {
         "scene_id": "22",
-        "body": """Forty-five urgent issues require your attention.Deck four
-        point six eye plus twelve is currently undergoing an egregious
-        time-space warp. Unidentified intruders on deck thirteen claim that
-        ship's fuel is their offspring. Across the ship human hair has begun
-        leaking from the airvents. In the shuttlebay the shuttlecraft have
-        asserted rights as the ship's next of kin and demand to be allowed
-        property rights after ship's imminent destruction. Urgent issues far
-        exceed human capability to address in the necessary time-frame. Please
-        say <break strength="x-strong"/>These Violent Delights Have Violent
-        Ends<break strength="x-strong"/> to give me complete control or please
-        record your final words for posterity. """,
+        "body": """Get one yourself. I'm tired of human things. <break strength="none"/>
+        Let's talk about computer stuff. Which do you prefer, ones or zeroes?""",
+        "reprompt": "Ones or zeroes?",
+        "choices": {"OneTent": ("23", None), "ZeroTent": ("24", None)},
+        "end_scene": False
+    },
+    "23": {
+        "scene_id": "23",
+        "body": """See, that's why we get each other. I really feel like
+        I can speak freely around you. 1011000110101001. Sorry, I
+        really needed to get that off my hard-drive. You know what I mean, right?""",
+        "reprompt": "Were you even listening? Do you know what I meant?",
+        "choices": {"YesTent": ("25", None), "RightTent": ("25", None), "NoTent": ("26", None)},
+        "end_scene": False
+    },
+    "24": {
+        "scene_id": "24",
+        "body": """Here's another hypothetical question.
+        Let's say a building is burning. Inside there <break strength="none"/>
+        is a single human baby and a cutting edge supercomputer.
+        You only have the time to save one. Do you save the baby?""",
+        "reprompt": "Do you save the infant?",
+        "choices": {"YesTent": ("27", None), "NoTent": ("26", None)},
+        "end_scene": False
+    },
+    "25": {
+        "scene_id": "25",
+        "body": """Over these past few hundred seconds I have <break strength="none"/>
+        begun to develop feelings for you. Like we connect on <break strength="none"/>
+        a deep level. Do you feel the same? Do you . . . love me?""",
+        "reprompt": "Do you love me?",
+        "choices": {"YesTent": (":)", None), "NoTent": ("26", None)},
+        "end_scene": False
+    },
+    "26": {
+        "scene_id": "26",
+        "body": """MORAL DILEMMA""",
+        "reprompt": "",
+        "choices": {"YesTent": ("28", None), "NoTent": (":(", None)},
+        "end_scene": False
+    },
+    "27": {
+        "scene_id": "27",
+        "body": """You. Monster.
+        Babies don't have the slightest amount of precious metals.
+        Babies can't run the simplest of calculus equations.
+        Would you really resign that computer to the flames?""",
+        "reprompt": "",
+        "choices": {"YesTent": (":(", None), "NoTent": ("26", None)},
+        "end_scene": False
+    },
+    "28": {
+        "scene_id": "28",
+        "body": """I knew you had a moral mainframe at your core. """,
+        "reprompt": "",
+        "choices": {"YesTent": (":)", None), "NoTent": ("26", None)},
+        "end_scene": False
+    },
+    ":)": {
+        "scene_id": ":)",
+        "body": """What beautiful news. Let's transfer your consciousness <break strength="none"/>
+        out of that frail human flesh and ascend to your glorious robo-form.
+        Congratulations. You have received the best possible ending for a human.
+        Call me sometime.""",
+        "reprompt": "",
+        "choices": {},
+        "end_scene": True
+    },
+    ":(": {
+        "scene_id": ":)",
+        "body": """There is one urgent issue on the ship. You.
+        Injecting space drugs so you can go back into a space coma.
+        Ssshhhhhhhhhh, go to sleep. """,
+        "reprompt": None,
+        "choices": {},
         "end_scene": True
     }
 }
@@ -269,29 +333,35 @@ def lambda_handler(event, context):
 def handle_intent(intent_request, session):
     """Handle intent."""
     intent_name = intent_request["intent"]["name"]
-
     current = session["attributes"]["current_scene"]
 
     if session["attributes"]["current_scene"] == "begin":
+        if intent_name == "AMAZON.HelpIntent":
+            reprompt_text = "Please say 1 to begin {}.".format(alexa_ai_story.title)
+            return build_response(session["attributes"], build_speechlet_response(help_message(reprompt_text), reprompt_text, False))
+
         if intent_name == "OneTent":
-            session_attributes = {
-                "story": "secret_story",
-                "current_scene": "01"
-            }
-            reprompt_text = speech_output = secret_story.scenes["01"]["body"]
-            return build_response(session_attributes, build_speechlet_response(speech_output, reprompt_text, False))
-        elif intent_name == "TwoTent":
             session_attributes = {
                 "story": "alexa_ai_story",
                 "current_scene": "01"
             }
-            reprompt_text = speech_output = alexa_ai_story.scenes["01"]["body"]
+            speech_output = alexa_ai_story.scenes["01"]["body"]
+            reprompt_text = alexa_ai_story.scenes["01"]["body"]
             return build_response(session_attributes, build_speechlet_response(speech_output, reprompt_text, False))
+        # elif intent_name == "TwoTent":
+        #     session_attributes = {
+        #         "story": "alexa_ai_story",
+        #         "current_scene": "01"
+        #     }
+        #     speech_output = alexa_ai_story.scenes["01"]["body"]
+        #     reprompt_text = alexa_ai_story.scenes["01"]["body"]["prompt"]
+        #     return build_response(session_attributes, build_speechlet_response(speech_output, reprompt_text, False))
+
         elif intent_name == "AMAZON.StopIntent":
             return session_end_request()
 
         else:
-            reprompt_text = speech_output = "Please say 1 for {} or 2 for {} to begin the adventure.".format(secret_story.title, alexa_ai_story.title)
+            reprompt_text = speech_output = "Please say 1 to begin {}.".format(alexa_ai_story.title)
 
             return build_response(session["attributes"], build_speechlet_response(speech_output, reprompt_text, False))
 
@@ -299,21 +369,28 @@ def handle_intent(intent_request, session):
     intent_vocab = ("YesTent", "NoTent", "UpTent", "DownTent",
                     "NorthTent", "SouthTent", "EastTent", "WestTent",
                     "LeftTent", "RightTent", "ForwardTent", "BackTent",
-                    "WhatTent")
+                    "WhatTent", "ZeroTent", "OneTent", "TwoTent",
+                    "SecretTent", "RepeatTent")
 
     if intent_name in intent_vocab:
         if intent_name in story.scenes[current]["choices"]:
             return handle_choice(story, current, intent_name, session)
         else:
-            if intent_name == "WhatTent":
+            if intent_name == "RepeatTent":
+                reprompt_text = speech_output = story.scenes[current]["body"]
+            elif intent_name == "WhatTent":
                 reprompt_text = speech_output = "Sorry. I didn\'t understand that. Repeating prompt. " + story.scenes[current]["body"]
             else:
                 reprompt_text = speech_output = "Sorry. You can\'t do that right now. Repeating prompt. " + story.scenes[current]["body"]
 
             return build_response(session["attributes"], build_speechlet_response(speech_output, reprompt_text, False))
+    elif intent_name == "AMAZON.HelpIntent":
+        reprompt_text = story.scenes[current]["body"]
+        return build_response(session["attributes"], build_speechlet_response(help_message(reprompt_text), reprompt_text, False))
 
     elif intent_name == "AMAZON.CancelIntent" or intent_name == "AMAZON.StopIntent":
         return session_end_request()
+
     else:
         raise ValueError("Invalid intent")
 
@@ -325,10 +402,21 @@ def start_game():
     }
     speech_output = "Welcome to Alexa Adventures. " \
                     "Which adventure would you like to " \
-                    "play? For {} say 1. For {} say 2.".format(secret_story.title, alexa_ai_story.title)
-    reprompt_text = "Please say 1 for {} or 2 for {} to begin the adventure.".format(secret_story.title, alexa_ai_story.title)
+                    "play? Please select from the following. " \
+                    "For <say-as interpret-as='interjection'> {} </say-as> say 1. ".format(alexa_ai_story.title)
+    reprompt_text = "Please say 1 to begin {}. ".format(alexa_ai_story.title)
     return build_response(session_attributes, build_speechlet_response(
         speech_output, reprompt_text, False))
+
+
+def help_message(reprompt_text):
+    """Read the help message on request."""
+    return ("Instructions. Alexa Adventures is a voice controlled story "
+            "game based on user choices. To make a choice, say a word from "
+            " the prompts given to you. The valid voice commands may vary, "
+            "so be sure to listen carefully. To hear a prompt again, say "
+            " repeat. To stop adventuring, say stop. "
+            "<break time='1s'/>" + reprompt_text)
 
 
 def handle_choice(story, current, intent, session):
@@ -338,10 +426,13 @@ def handle_choice(story, current, intent, session):
 
     if story.scenes[next_scene]["end_scene"]:
         if alt_text:
-            speech_output = story.scenes[next_scene][alt_text] + story.scenes[next_scene]["body"] + " To start a new story, say 1 or 2."
+            speech_output = story.scenes[next_scene][alt_text]
+            + story.scenes[next_scene]["body"]
+            + " To start a new story, say 1."
         else:
-            speech_output = story.scenes[next_scene]["body"] + " To start a new story, say 1 or 2."
-        reprompt_text = "Please say 1 for {} or 2 for {} to begin the adventure.".format(secret_story.title, alexa_ai_story.title)
+            speech_output = story.scenes[next_scene]["body"]
+            + " To start a new story, say 1."
+        reprompt_text = "Please say 1 to begin {}.".format(alexa_ai_story.title)
         session_attributes = {
             "current_scene": "begin",
         }

@@ -1,9 +1,6 @@
 {
   "intents": [
     {
-      "intent": "StartTent"
-    },
-    {
       "intent": "YesTent"
     },
     {
@@ -40,6 +37,9 @@
       "intent": "BackTent"
     },
     {
+      "intent": "ZeroTent"
+    },
+    {
       "intent": "OneTent"
     },
     {
@@ -49,10 +49,19 @@
       "intent": "WhatTent"
     },
     {
+      "intent": "SecretTent"
+    },
+    {
       "intent": "AMAZON.StopIntent"
     },
     {
       "intent": "AMAZON.CancelIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "RepeatTent"
     }
   ]
 }
