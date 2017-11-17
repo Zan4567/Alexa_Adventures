@@ -158,7 +158,7 @@ alexa_ai_story.scenes = {
         Should I herd them to the science lab and save the remaining eighty percent of our elderly
         population?""",
         "reprompt": "Redirect murderbots to science lab? Yes or no.",
-        "choices": {"YesTent": ("16", None), "NoTent": ("18", "alt_body01")},
+        "choices": {"YesTent": ("16", None), "NoTent": ("18", "alt_body01"), "SecretTent": ("21", None)},
         "end_scene": False
     },
     "16": {
