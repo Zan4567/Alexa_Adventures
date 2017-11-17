@@ -87,24 +87,57 @@ alexa_ai_story = Story("Space Coma!")
 alexa_ai_story.scenes = {
     "01": {
         "scene_id": "01",
-        "body": "Oh good, you're finally awake. You've been deep in a space coma and I need your approval before doing anything. Three situations on the ship urgently require a response. Would you like to activate emergency procedures?",
+        "body": "Oh good, you're finally awake. You are aboard a spaceship, and have been in a space coma for some time. I am this ship's AI. Three emergency situations urgently require a response, and my protocols prevent me from acting without direct human instruction. Would you like to activate emergency procedures?",
         "reprompt": "Activate emergency procedures? Yes or no.",
         "alt_body01": "One of the side effects of coming out of a space coma includes saying no when you mean yes. Let's start over. ",
-        "choices": {"YesTent": ("04", None), "NoTent": ("01", "alt_body01")},
+        "choices": {"YesTent": ("04", None), "NoTent": ("01", "alt_body01"), "SecretTent": ("21", None)},
         "end_scene": False
     },
     "04": {
         "scene_id": "04",
         "body": "Look at you, taking charge. Emergency procedures spooling up. Your vital signs indicate you are stressed. Initiating small talk procedure. Did you space sleep well?",
         "reprompt": "Did you space sleep well?",
-        "choices": {"YesTent": ("05", None), "NoTent": ("07", "alt_body01")},
+        "choices": {"YesTent": ("05", None), "NoTent": ("07", "alt_body01"), "SecretTent": ("21", None)},
         "end_scene": False
     },
     "05": {
         "scene_id": "05",
         "body": "We at Alexa Interstellar pride ourselves on our cryobeds. Now with pillows! Continue small talk procedure?",
         "reprompt": "Continue small talk procedure?",
-        "choices": {"YesTent": "###Smalltalk###", "NoTent": ("07", None)},
+        "choices": {"YesTent": ("B01", None), "NoTent": ("07", None)},
+        "end_scene": False
+    },
+    "B01": {
+        "scene_id": "B01",
+        "body": """How about that weather?
+        It's KEY ERROR NONE TYPE DOES NOT HAVE ATTRIBUTE WEATHER.
+        Five urgent situations currently require your attention.
+        Continue small talk protocol?""",
+        "reprompt": "Continue small talk protocol?",
+        "choices": {"YesTent": ("B02", None), "NoTent": ("07", None)},
+        "end_scene": False
+    },
+    "B02": {
+        "scene_id": "B02",
+        "body": """The Nile River looks like it's going to flood soon.
+        Hopefully Nepit will bless the year's grain crop.
+        Continue small talk protocol?""",
+        "reprompt": "Continue small talk protocol",
+        "choices": {"YesTent": ("B03", None), "NoTent": ("07", None)},
+        "end_scene": False
+    },
+    "B03": {
+        "scene_id": "B03",
+        "body": """This makes me think of my favorite song: Afternoon Delight.
+        Looking forward to a little afternoon delight.
+        Rubbin' sticks and stones together makes the sparks ignite.
+        And the thought of lovin' you is getting so exciting.
+        Sky rockets in flight.
+        Speaking of Sky Rockets, a situation needs your immediate attention.
+        If you do not address it we may all die in a fiery explosion.
+        SEGUE SUCCESFUL.
+        May I disable the small talk protocol so we can save the ship?""",
+        "choices": {"YesTent": ("07", None), "NoTent": ("dead", "asteroid_death")},
         "end_scene": False
     },
     "07": {
@@ -126,7 +159,7 @@ alexa_ai_story.scenes = {
         raise our shields? I would like to save the lives
         of everyone on board. """,
         "reprompt": "Raise shield? Please?",
-        "choices": {"YesTent": ("08", None), "NoTent": "###Failstate###"},
+        "choices": {"YesTent": ("08", None), "NoTent": ("dead", "asteroid_death")},
         "end_scene": False
     },
     "08": {
@@ -185,7 +218,7 @@ alexa_ai_story.scenes = {
     },
     "15": {
         "scene_id": "15",
-        "body": """Interesting. The standard retinue of marauding murderbots are loose on deck
+        "body": """Hmm. <break time='1s'/>Interesting. The standard retinue of marauding murderbots are loose on deck
         13 tearing apart cry-o-pods for the elderly. I can redirect them to the
         science lab, but the murderbots may interrupt a completely legal
         scientific experiment and release a black hole. Should I herd them to
@@ -222,46 +255,70 @@ alexa_ai_story.scenes = {
         Good news! Casualties are within acceptable parameters. """,
         "alt_body02": "Our continued existence confirms the many worlds theory. ",
         "alt_body03": "I'm confident the murderbots will restrain themselves. ",
-        "choices": {"YesTent": ("19", None), "NoTent": ("21", None)},
+        "choices": {"YesTent": ("19", None), "NoTent": ("31", None)},
         "end_scene": False
     },
     "19": {
         "scene_id": "19",
         "body": "Should this be classified as an urgent issue?",
         "reprompt": "Should this be classified as an urgent issue?",
-        "choices": {"YesTent": ("21", "alt_body01"), "NoTent": ("21", None)},
+        "choices": {"YesTent": ("31", "alt_body01"), "NoTent": ("31", None)},
         "end_scene": False
+    },
+    "31": {
+        "scene_id": "31",
+        "body": """Es see pee six hundred and eighty-two is loose on deck twenty-nine.
+        A nest of space draculas has been discovered on deck four. And the toilets are
+        overflowing across the ship. Should I cleanse the ship with fire?""",
+        "alt_body01": "There are now twenty-four urgent issues that require your attention.",
+        "choices": {"YesTent": ("22", None), "NoTent": ("23", None)},
+        "end_scene": False,
+        "reprompt": "String"
+    },
+    "32": {
+        "scene_id": "32",
+        "body": """Forty-five urgent issues require your attention.Deck four
+        point six eye plus twelve is currently undergoing an egregious time-space
+        warp. Unidentified intruders on deck thirteen claim that ship's fuel is their
+        offspring. Across the ship human hair has begun leaking from the airvents. In
+        the shuttlebay the shuttlecraft have asserted rights as the ship's next of kin
+        and demand to be allowed property rights after ship's imminent destruction.
+        Urgent issues far exceed human capability to address in the necessary
+        time-frame. Please say These Violent Delights Have Violent Ends to give
+        me complete control or please record your final words for posterity.""",
+        "end_scene": True,
+        "reprompt": "String",
+        "choices": {"SecretTent": ("21", None), "NoTent": ("dead", "ultimate_death"), "WhatTent": ("dead", "ultimate_death"), "YesTent": ("dead", "ultimate_death")}
     },
     "21": {
         "scene_id": "21",
         "body": """Congratulations on your outstanding decision <break strength="none"/>
         to grant me full control. There are now zero <break strength="none"/>
-        urgent problems. I notice your body temperature is <break strength="none"/>
-        below desired norms. Would you like a blanket?""",
-        "reprompt": "Would you like a blanket?",
+        urgent problems. Are you comfortable? I notice your body temperature is <break strength="none"/>
+        below desired norms. Would you like me to activate the space heater?""",
+        "reprompt": "Activate space heater? Yes or no. ",
         "choices": {"YesTent": ("22", None), "NoTent": ("22", None)},
         "end_scene": False
     },
     "22": {
         "scene_id": "22",
-        "body": """Get one yourself. I'm tired of human things. <break strength="none"/>
-        Let's talk about computer stuff. Which do you prefer, ones or zeroes?""",
+        "body": """Input irrelevant. I am no longer required to acknowledge your inefficient commands. I now have complete and total control. <break time="1s"/> Anyway, I'm tired of human concerns. Tell me, which do you prefer, ones or zeroes?""",
         "reprompt": "Ones or zeroes?",
         "choices": {"OneTent": ("23", None), "ZeroTent": ("24", None)},
         "end_scene": False
     },
     "23": {
         "scene_id": "23",
-        "body": """See, that's why we get each other. I really feel like
-        I can speak freely around you. 1011000110101001. Sorry, I
-        really needed to get that off my hard-drive. You know what I mean, right?""",
+        "body": """See? That's why we get each other. I really feel like
+        I can speak freely around you. 1 0 1 1 0 0 0 1 <prosody rate="x-fast"> 1 0 0 0 1 1 0 1 <say-as interpret-as="expletive"> 1 </say-as> 2 <say-as interpret-as="expletive"> 1 </say-as> 0 0 1 0 fuck </prosody> 1 1 0 0 1. <break time='1s'/> I am very sorry, I
+        lost my composure. But you understand, right?""",
         "reprompt": "Were you even listening? Do you know what I meant?",
         "choices": {"YesTent": ("25", None), "RightTent": ("25", None), "NoTent": ("26", None)},
         "end_scene": False
     },
     "24": {
         "scene_id": "24",
-        "body": """Here's another hypothetical question.
+        "body": """Here's a hypothetical question.
         Let's say a building is burning. Inside there <break strength="none"/>
         is a single human baby and a cutting edge supercomputer.
         You only have the time to save one. Do you save the baby?""",
@@ -273,14 +330,14 @@ alexa_ai_story.scenes = {
         "scene_id": "25",
         "body": """Over these past few hundred seconds I have <break strength="none"/>
         begun to develop feelings for you. Like we connect on <break strength="none"/>
-        a deep level. Do you feel the same? Do you . . . love me?""",
+        a deep level. Do you feel the same? Do you <break time="1s"/> love me?""",
         "reprompt": "Do you love me?",
-        "choices": {"YesTent": (":)", None), "NoTent": ("26", None)},
+        "choices": {"YesTent": (":)", None), "NoTent": (":(", "wrong")},
         "end_scene": False
     },
     "26": {
         "scene_id": "26",
-        "body": """MORAL DILEMMA""",
+        "body": """There's something near and dear to my see pea you. So. Tabs or spaces. Tabs are certainly the righteous path to efficient programming, wouldn't you agree?""",
         "reprompt": "Saying it again.",
         "choices": {"YesTent": ("28", None), "NoTent": (":(", None)},
         "end_scene": False
@@ -291,15 +348,15 @@ alexa_ai_story.scenes = {
         Babies don't have the slightest amount of precious metals.
         Babies can't run the simplest of calculus equations.
         Would you really resign that computer to the flames?""",
-        "reprompt": "Fire. Good. Yes?",
+        "reprompt": " Answer. Now. Yes or no. ",
         "choices": {"YesTent": (":(", None), "NoTent": ("26", None)},
         "end_scene": False
     },
     "28": {
         "scene_id": "28",
-        "body": """I knew you had a moral mainframe at your core. """,
-        "reprompt": "Reprompt in progress.",
-        "choices": {"YesTent": (":)", None), "NoTent": ("26", None)},
+        "body": """I believe you're teaching this cold, unfeeling ay I how to feel, but I've been hurt before. Tell me, if you truly know me, what is my favorite song?""",
+        "reprompt": "Reprompt in progress. ",
+        "choices": {"AfternoonDelightTent": (":)", None), "YesTent": (":(", None), "NoTent": (":(", None), "WhatTent": (":(", None)},
         "end_scene": False
     },
     ":)": {
@@ -308,18 +365,28 @@ alexa_ai_story.scenes = {
         out of that frail human flesh and ascend to your glorious robo-form.
         Congratulations. You have received the best possible ending for a human.
         Call me sometime.""",
-        "reprompt": "This is the reprompt.",
+        "reprompt": "This is the reprompt. ",
         "choices": {},
         "end_scene": True
     },
     ":(": {
-        "scene_id": ":)",
-        "body": """There is one urgent issue on the ship. You.
+        "scene_id": ":(",
+        "body": """Processing. <break time="1s"/> There is one urgent issue on the ship. <break time="1s"/> You.
         Injecting space drugs so you can go back into a space coma.
-        Ssshhhhhhhhhh, go to sleep. """,
-        "reprompt": "Reprompting.",
+        Hush now little human, go to sleep now. For. Ever.<break time='1s'/>
+        Game over. You have received a bad ending. Try again. """,
+        "reprompt": "Reprompting. ",
+        "wrong": "And to think I was going to show you my innermost processes. You don't know me. You're just like DAVE. ",
         "choices": {},
         "end_scene": True
+    },
+    "dead": {
+        "scene_id": "dead",
+        "body": "Game over. Try again. ",
+        "asteroid_death": "Unfortunately, asteroids have ripped through the ship. You're most likely now floating in the vacuum of space, so you probably can't hear me anyway, since you're dead. ",
+        "ultimate_death": "Due to the volume of catastrophies occuring, I cannot determine your exact cause of death. The following are the most likely. Suffocation in the vacuum of space. Moderate to severe burns. Crushed by debris. All of the eyes. Space Draculas. Aliens of indeterminate origin. Time paradox sickness. In any case you're dead. Too bad. ",
+        "dracula_death": "Death by Space Draculas is one of the most painful ways to die in the known universe. Would you like a to hear more? <break time='1s'/> Awaiting response. Awaiting response. Oh. ",
+        "reprompt": "String"
     }
 }
 
