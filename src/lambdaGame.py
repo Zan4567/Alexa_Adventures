@@ -38,7 +38,7 @@ alexa_ai_story.scenes = {
     },
     "05": {
         "scene_id": "05",
-        "body": """We at Alexa Interstellar pride ourselves on our cryo beds. Now with pillows!
+        "body": """We at Alexa Interstellar pride ourselves on our cryo beds. Now with pillows! 
         Continue small talk procedure?""",
         "reprompt": "Continue small talk procedure?",
         "choices": {"YesTent": ("B01", None), "NoTent": ("07", None), "SecretTent": ("21", None)},
@@ -161,7 +161,7 @@ alexa_ai_story.scenes = {
         Should I herd them to the science lab and save the remaining eighty percent of our elderly
         population?""",
         "reprompt": "Redirect murderbots to science lab? Yes or no.",
-        "choices": {"YesTent": ("16", None), "NoTent": ("18", "alt_body01")},
+        "choices": {"YesTent": ("16", None), "NoTent": ("18", "alt_body01"), "SecretTent": ("21", None)},
         "end_scene": False
     },
     "16": {
