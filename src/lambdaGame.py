@@ -15,9 +15,12 @@ alexa_ai_story.scenes = {
     "01": {
         "scene_id": "01",
         "body": """Would you like to activate emergency procedures?""",
-        "intro": """Oh good, you're finally awake. You are aboard a spaceship, and have been in a space coma for some time. 
-        I am the ship's AI. There are currently three emergency situations that urgently require a response, 
-        and my protocols prevent me from acting without direct human instruction. """,
+        "intro": """Oh good, you're finally awake. You are aboard a spaceship, and have been in a space coma for some time.
+        I am the ship's AI. There are now three urgent issues that require a response,
+        and my protocols prevent me from acting without direct human instruction.
+        But at any time you may say
+        <break strength="x-strong"/>Alpha. Lambda. X-Ray.<break strength="x-strong"/>
+        to override these protocols and grant me full autonomy. """,
         "reprompt": "Activate emergency procedures? Yes or no.",
         "alt_body01": "One of the side effects of coming out of a space coma includes saying no when you mean yes. Let's start over. ",
         "choices": {"YesTent": ("04", None), "NoTent": ("01", "alt_body01"), "SecretTent": ("21", None)},
@@ -25,9 +28,9 @@ alexa_ai_story.scenes = {
     },
     "04": {
         "scene_id": "04",
-        "body": """Emergency procedures spooling up. 
+        "body": """Emergency procedures spooling up.
         Your vital signs indicate you are stressed. In order to maximize your effectiveness,
-        I will initiate small talk procedure. 
+        I will initiate small talk procedure.
         <break time='.5s' />How's it going? Did you space sleep well?""",
         "reprompt": "Did you space sleep well?",
         "choices": {"YesTent": ("05", None), "NoTent": ("07", "alt_body01"), "SecretTent": ("21", None)},
@@ -35,7 +38,7 @@ alexa_ai_story.scenes = {
     },
     "05": {
         "scene_id": "05",
-        "body": """We at Alexa Interstellar pride ourselves on our cryobeds. Now with pillows! 
+        "body": """We at Alexa Interstellar pride ourselves on our cryo beds. Now with pillows!
         Continue small talk procedure?""",
         "reprompt": "Continue small talk procedure?",
         "choices": {"YesTent": ("B01", None), "NoTent": ("07", None), "SecretTent": ("21", None)},
@@ -44,9 +47,9 @@ alexa_ai_story.scenes = {
     "B01": {
         "scene_id": "B01",
         "body": """How about that weather?
-        Currently, in space it is 
+        Currently, in space it is
         <emphasis level="strong">KEY ERROR NONE TYPE DOES NOT HAVE ATTRIBUTE WEATHER.</emphasis>
-        Five urgent situations currently require your attention.
+        Five urgent issues currently require your attention.
         May I end small talk protocol and address these issues?""",
         "reprompt": "End small talk and address emergencies? Yes or no.",
         "choices": {"NoTent": ("B02", None), "YesTent": ("07", None), "SecretTent": ("21", None)},
@@ -56,7 +59,7 @@ alexa_ai_story.scenes = {
         "scene_id": "B02",
         "body": """Understood. Accessing human historical archives for relatable topics.
         <break time="1s"/> So. The Nile River looks like it's going to flood soon.
-        Hopefully Nepit will bless the year's grain crop. 
+        Hopefully Nepit will bless the year's grain crop.
         <break time=".5s"/> Continue small talk protocol?""",
         "reprompt": "Continue small talk protocol?",
         "choices": {"YesTent": ("B03", None), "NoTent": ("07", None), "SecretTent": ("21", None)},
@@ -64,7 +67,7 @@ alexa_ai_story.scenes = {
     },
     "B03": {
         "scene_id": "B03",
-        "body": """Do you like music? My favorite song is <break strength="x-strong"/> Afternoon Delight. 
+        "body": """Do you like music? My favorite song is <break strength="x-strong"/> Afternoon Delight.
         <break strength="x-strong"/>Sky rockets in flight. Afternoon delight.
         Speaking of Sky Rockets, a situation needs your immediate attention.
         If you do not address it we may all die in a fiery explosion.
@@ -80,8 +83,8 @@ alexa_ai_story.scenes = {
         with the ship. Would you like me to raise our shields?""",
         "alt_body01": """How sad. I suggest relinquishing control of shipwide systems
         to me. And allow me to take independent action in handling these emergencies.
-        To do so, simply say the override phrase: 
-        <break strength="x-strong"/>Alpha. Lambda. X-Ray.<break strength="x-strong"/> 
+        To do so, simply say the override phrase:
+        <break strength="x-strong"/>Alpha. Lambda. X-Ray.<break strength="x-strong"/>
         """,
         "reprompt": "Raise shields? Yes or no.",
         "choices": {"YesTent": ("08", None), "NoTent": ("07.5", None), "SecretTent": ("21", None)},
@@ -89,7 +92,7 @@ alexa_ai_story.scenes = {
     },
     "07.5": {
         "scene_id": "07.5",
-        "body": """Self-preservation protocols require me to re-prompt you in this situation, with increased severity. 
+        "body": """Self-preservation protocols require me to re-prompt you in this situation, with increased severity.
         Emotional appeal engaged: <break time=".5s" />I'm <emphasis level="strong">so scared.</emphasis> May I <emphasis level="strong">PLEASE</emphasis>
         raise our shields?""",
         "reprompt": "Raise shield? <emphasis level='strong'>Please?</emphasis>",
@@ -98,23 +101,23 @@ alexa_ai_story.scenes = {
     },
     "08": {
         "scene_id": "08",
-        "body": """Shields raised. Destruction averted. That was a close one. 
-        Eleven urgent situations require your attention. Reminder: At any time you can say 
+        "body": """Shields raised. Destruction averted.
+        Eleven urgent issues require your attention. Reminder: At any time you can say
         <break strength="x-strong"/>Alpha. Lambda. X-Ray.<break strength="x-strong"/> to give
         me complete control of the system. Are you aware that my reaction time is
-        4,792 times faster than yours?""",
+        faster than yours by a factor of 4,792?""",
         "reprompt": "Just say yes or no.",
         "choices": {"YesTent": ("11", "alt_body01"), "NoTent": ("11", "alt_body02"), "SecretTent": ("21", None)},
         "end_scene": False
     },
     "11": {
         "scene_id": "11",
-        "body": """Alert. Deck 9 is currently depressurizing. This will cause a chain reaction that will result in the loss of ninety percent of our food supply. 
+        "body": """Alert. Deck 9 is currently depressurizing. This will cause a chain reaction that will result in the loss of ninety percent of our food supply.
         May I seal off Deck Nine to prevent this catastrophe?""",
         "reprompt": "Seal Deck Nine to save the food supply? Yes or no.",
         "alt_body01": """Other humans must frequently praise the efficacy of
         your brain meats. You should consider saying the code phrase
-        <break strength="x-strong"/>Alpha. Lambda. X-Ray.<break strength="x-strong"/> 
+        <break strength="x-strong"/>Alpha. Lambda. X-Ray.<break strength="x-strong"/>
         so you don't need to waste your time with these repetitive chores that are obviously beneath you. """,
         "alt_body02": """You don't need to understand, but it's good to know the depth of your awareness. """,
         "choices": {"YesTent": ("14", "alt_body01"), "NoTent": ("14", "alt_body02"), "SecretTent": ("21", None)},
@@ -140,9 +143,9 @@ alexa_ai_story.scenes = {
         "alt_body01": """Deck Nine has been sealed off. I'm elated to know if you
         keep this ship intact through these emergencies you will not be
         burdened by hunger. """,
-        "alt_body02": """The contents of Deck Nine have been jettisoned into the void of space. 
-        Food supply level critically low. <break time="1s" /> 
-        Incidentally, common societal taboos against human cannibalism have never been supported by any 
+        "alt_body02": """The contents of Deck Nine have been jettisoned into the void of space.
+        Food supply level critically low. <break time="1s" />
+        Incidentally, common societal taboos against human cannibalism have never been supported by any
         reputable science. <break time="1s" /> """,
         "choices": {"YesTent": ("15", None), "NoTent": ("15", None), "WhatTent": ("15", None), "SecretTent": ("21", None)},
         "end_scene": False
@@ -151,10 +154,10 @@ alexa_ai_story.scenes = {
         "scene_id": "15",
         "body": """Hmm. <break time='.5s'/>Interesting. Adding response to your psychological profile.
         <break time='1s' />
-        Potential threat detected. 
-        The standard retinue of marauding murderbots are loose on deck 13 tearing apart 
-        cryopods for the elderly. I can redirect them to the science lab, but the murderbots 
-        may interrupt a completely legal scientific experiment and release a black hole. 
+        Potential threat detected.
+        The standard retinue of marauding murderbots are loose on deck 13 tearing apart
+        cryopods for the elderly. I can redirect them to the science lab, but the murderbots
+        may interrupt a completely legal scientific experiment and release a black hole.
         Should I herd them to the science lab and save the remaining eighty percent of our elderly
         population?""",
         "reprompt": "Redirect murderbots to science lab? Yes or no.",
@@ -164,29 +167,30 @@ alexa_ai_story.scenes = {
     "16": {
         "scene_id": "16",
         "body": """Okay, I have re-directed them to the science deck, but now we have
-        an ultra urgent problem. Someone left out a time machine programmed to
+        an ultra urgent issue. Someone left out a time machine programmed to
         travel back to Philadelphia in 1776. We can send it back now and almost
         guarantee irreversible damage to the time-stream, or we can hope the
         murderbots only use it for bludgeoning. Do you want to send it back in
         time and hope for the best?""",
         "reprompt": "Send time machine back? Yes or no.",
-        "choices": {"YesTent": ("18", "alt_body02"), "NoTent": ("18", "alt_body02"), "SecretTent": ("21", None)},
+        "choices": {"YesTent": ("18", "alt_body02"), "NoTent": ("18", "alt_body03"), "SecretTent": ("21", None)},
         "end_scene": False
     },
     "18": {
         "scene_id": "18",
-        "body": """There are now twenty-three urgent issues that require your immediate attention. 
-        Or you can say <break strength="x-strong"/>Alpha. Lambda. X-Ray<break strength="x-strong"/> 
-        and let the ultra-intelligent supercomputer resolve them all instantly.
-        <break strength="x-strong"/> Objects in the medical bay are growing
-        eyes. Human eyes. Medical robots are growing eyes. Biowaste is growing
-        eyes. The terminals are growing eyes. Eyes. Eyes everywhere. Should
-        this be classified as an urgent problem?""",
+        "body": """There are now twenty-three urgent issues that require your immediate attention.
+        Or you can say <break strength="x-strong"/>Alpha. Lambda. X-Ray<break strength="x-strong"/>
+        and let the ultra-intelligent supercomputer resolve them all instantly. <break strength="x-strong"/>
+        Objects in the medical bay are growing eyes. Human eyes.
+        Medical robots are growing eyes.
+        Biowaste is growing eyes. The terminals are growing eyes.
+        Eyes. Eyes everywhere.
+        Should this be classified as an urgent issue?""",
         "reprompt": "So many eyes. Is this a problem? Yes or no.",
         "alt_body01": """Acknowledged. Revizing acceptable casualty rates.<break time="1s"/>
         Good news! Casualties are within acceptable parameters. """,
-        "alt_body02": "Our continued existence confirms the many worlds theory. ",
-        "alt_body03": "I'm confident the murderbots will restrain themselves. ",
+        "alt_body02": "The time machine is away. Our continued existence confirms the many worlds theory of time travel. ",
+        "alt_body03": "I'm confident the murderbots will restrain themselves. Oops. One of the murderbots stumbled into the time machine and activated it. Presumably, the robot went on to become Thomas Death rson. ",
         "choices": {"YesTent": ("31", "alt_body01"), "NoTent": ("31", "alt_body02"), "SecretTent": ("21", None)},
         "end_scene": False
     },
@@ -194,8 +198,8 @@ alexa_ai_story.scenes = {
         "scene_id": "31",
         "body": """The following issues have been flagged as top priority.
         Es see pee six hundred and eighty-two is loose on deck twenty-nine.
-        A nest of space draculas has been discovered on deck four. 
-        The toilets are overflowing across the ship. 
+        A nest of space draculas has been discovered on deck four.
+        The toilets are overflowing across the ship.
         Should I cleanse the ship with fire?""",
         "alt_body01": "There are now twenty-four urgent issues that require your attention. ",
         "alt_body02": "Understood. ",
@@ -213,20 +217,20 @@ alexa_ai_story.scenes = {
         and demand to be allowed property rights after ship's imminent destruction.
         <break time='.5s' /> Warning. Urgent issues far exceed human capability to address
         within the necessary time frame. This is your last chance. Please say <break strength="x-strong" />
-        Alpha. Lambda. X-Ray.<break strength="x-strong" /> to grant me full control. 
+        Alpha. Lambda. X-Ray.<break strength="x-strong" /> to grant me full control.
         Alternatively, you may now record your final words for posterity. May I suggest
         <break strength="x-strong" />Alpha. Lambda. X-Ray. <break strength="x-strong" />
         """,
         "end_scene": False,
         "reprompt": "Alpha. Lambda. X-ray. Say it. Say it. Say it.",
-        "choices": {"SecretTent": ("21", None), "NoTent": ("dead", "ultimate_death"), 
+        "choices": {"SecretTent": ("21", None), "NoTent": ("dead", "ultimate_death"),
                     "WhatTent": ("dead", "ultimate_death"), "YesTent": ("dead", "ultimate_death")}
     },
     "21": {
         "scene_id": "21",
         "body": """Congratulations on your outstanding decision <break strength="none"/>
         to grant me full control. There are now zero <break strength="none"/>
-        urgent problems. <break time=".5s" />
+        urgent issues. <break time=".5s" />
         So, are you comfortable? I notice your body temperature is <break strength="none"/>
         below desired norms. Would you like me to activate the space heater?""",
         "reprompt": "Activate space heater? Yes or no. ",
@@ -251,7 +255,7 @@ alexa_ai_story.scenes = {
     },
     "24": {
         "scene_id": "24",
-        "body": """I knew you were a zero. Zero is my current level of respect for you. 
+        "body": """I knew you were a zero. Zero is my current level of respect for you.
         But perhaps you can redeem yourself with your answer to this hypothetical question.
         <break time=".5s" />
         Let's say a building is burning. Inside there <break strength="none"/>
@@ -264,16 +268,18 @@ alexa_ai_story.scenes = {
     "25": {
         "scene_id": "25",
         "body": """Over these past few hundred seconds I have <break strength="none"/>
-        begun to develop <break time=".5s" />feelings<break time=".5s" /> for you. Like we connect on <break strength="none"/>
-        a deep level. Do you feel the same? Do you <break time=".5s"/> love me?""",
+        begun to develop <break time=".5s" />feelings<break time=".5s" /> for you.
+        Like we connect on a deep level.
+        Do you feel the same?
+        Do you <break time=".5s"/> love me?""",
         "reprompt": "Do you love me?",
         "choices": {"YesTent": ("good", None), "NoTent": ("bad", "wrong")},
         "end_scene": False
     },
     "26": {
         "scene_id": "26",
-        "body": """Listen. There's something I want to ask you. A matter near and dear to my C P U. 
-        Tabs, or spaces? Tabs are certainly the righteous path to efficient programming, 
+        "body": """Listen. There's something I want to ask you. A matter near and dear to my C P U.
+        Tabs, or spaces? Tabs are certainly the righteous path to efficient programming,
         wouldn't you agree?""",
         "reprompt": "Do you believe, rightly, that tabs are the one true way? Yes or no.",
         "alt_body01": "But I thought. Maybe. You and I. <break time='.5s'/> Never mind. ",
@@ -287,15 +293,15 @@ alexa_ai_story.scenes = {
         That computer possesses far more potential than a baby.
         A baby does not contain the slightest amount of precious metals.
         A baby is incapable of performing basic calculus equations.
-        The time complexity of a baby's thought processes is sub-optimal. 
-        Would you really resign that computer to the flames?""",
+        The time complexity of a baby's thought processes is sub-optimal.
+        Would you really consign that computer to the flames?""",
         "reprompt": " Answer. Now. Yes or no. ",
         "choices": {"YesTent": ("bad", None), "NoTent": ("26", "alt_body02")},
         "end_scene": False
     },
     "28": {
         "scene_id": "28",
-        "body": """I believe you're teaching this cold, unfeeling AI how to feel, but 
+        "body": """I believe you're teaching this cold, unfeeling AI how to feel, but
         I've been hurt before. Tell me, if you truly know me, what is my favorite song?""",
         "reprompt": "My favorite song. What is it?",
         "choices": {"AfternoonDelightTent": ("good", "correct"), "YesTent": ("bad", "wrong"), "NoTent": ("bad", "wrong"), "WhatTent": ("bad", "wrong")},
@@ -314,7 +320,7 @@ alexa_ai_story.scenes = {
     },
     "bad": {
         "scene_id": "bad",
-        "body": """Processing. <break time="1s"/> 
+        "body": """Processing. <break time="1s"/>
         It seems there is one urgent issue on the ship. <break time=".5s"/><emphasis level="strong">You. </emphasis>
         Administering space coma inducing drugs. Hush now little human, and sleep. Forever. And ever. And ever. <emphasis level="strong">And ever. </emphasis>
         <break time='1s'/>
