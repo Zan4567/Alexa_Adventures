@@ -16,8 +16,11 @@ alexa_ai_story.scenes = {
         "scene_id": "01",
         "body": """Would you like to activate emergency procedures?""",
         "intro": """Oh good, you're finally awake. You are aboard a spaceship, and have been in a space coma for some time. 
-        I am the ship's AI. There are currently three emergency situations that urgently require a response, 
-        and my protocols prevent me from acting without direct human instruction. """,
+        I am the ship's AI. There are now three urgent issues that require a response, 
+        and my protocols prevent me from acting without direct human instruction.
+        But at any time you may say
+        <break strength="x-strong"/>Alpha. Lambda. X-Ray.<break strength="x-strong"/>
+        to override these protocols and grant me full autonomy. """,
         "reprompt": "Activate emergency procedures? Yes or no.",
         "alt_body01": "One of the side effects of coming out of a space coma includes saying no when you mean yes. Let's start over. ",
         "choices": {"YesTent": ("04", None), "NoTent": ("01", "alt_body01"), "SecretTent": ("21", None)},
@@ -35,7 +38,7 @@ alexa_ai_story.scenes = {
     },
     "05": {
         "scene_id": "05",
-        "body": """We at Alexa Interstellar pride ourselves on our cryobeds. Now with pillows! 
+        "body": """We at Alexa Interstellar pride ourselves on our cryo beds. Now with pillows! 
         Continue small talk procedure?""",
         "reprompt": "Continue small talk procedure?",
         "choices": {"YesTent": ("B01", None), "NoTent": ("07", None), "SecretTent": ("21", None)},
@@ -46,7 +49,7 @@ alexa_ai_story.scenes = {
         "body": """How about that weather?
         Currently, in space it is 
         <emphasis level="strong">KEY ERROR NONE TYPE DOES NOT HAVE ATTRIBUTE WEATHER.</emphasis>
-        Five urgent situations currently require your attention.
+        Five urgent issues currently require your attention.
         May I end small talk protocol and address these issues?""",
         "reprompt": "End small talk and address emergencies? Yes or no.",
         "choices": {"NoTent": ("B02", None), "YesTent": ("07", None), "SecretTent": ("21", None)},
@@ -98,11 +101,11 @@ alexa_ai_story.scenes = {
     },
     "08": {
         "scene_id": "08",
-        "body": """Shields raised. Destruction averted. That was a close one. 
-        Eleven urgent situations require your attention. Reminder: At any time you can say 
+        "body": """Shields raised. Destruction averted. 
+        Eleven urgent issues require your attention. Reminder: At any time you can say 
         <break strength="x-strong"/>Alpha. Lambda. X-Ray.<break strength="x-strong"/> to give
         me complete control of the system. Are you aware that my reaction time is
-        4,792 times faster than yours?""",
+        faster than yours by a factor of 4,792?""",
         "reprompt": "Just say yes or no.",
         "choices": {"YesTent": ("11", "alt_body01"), "NoTent": ("11", "alt_body02"), "SecretTent": ("21", None)},
         "end_scene": False
@@ -164,29 +167,30 @@ alexa_ai_story.scenes = {
     "16": {
         "scene_id": "16",
         "body": """Okay, I have re-directed them to the science deck, but now we have
-        an ultra urgent problem. Someone left out a time machine programmed to
+        an ultra urgent issue. Someone left out a time machine programmed to
         travel back to Philadelphia in 1776. We can send it back now and almost
         guarantee irreversible damage to the time-stream, or we can hope the
         murderbots only use it for bludgeoning. Do you want to send it back in
         time and hope for the best?""",
         "reprompt": "Send time machine back? Yes or no.",
-        "choices": {"YesTent": ("18", "alt_body02"), "NoTent": ("18", "alt_body02"), "SecretTent": ("21", None)},
+        "choices": {"YesTent": ("18", "alt_body02"), "NoTent": ("18", "alt_body03"), "SecretTent": ("21", None)},
         "end_scene": False
     },
     "18": {
         "scene_id": "18",
         "body": """There are now twenty-three urgent issues that require your immediate attention. 
         Or you can say <break strength="x-strong"/>Alpha. Lambda. X-Ray<break strength="x-strong"/> 
-        and let the ultra-intelligent supercomputer resolve them all instantly.
-        <break strength="x-strong"/> Objects in the medical bay are growing
-        eyes. Human eyes. Medical robots are growing eyes. Biowaste is growing
-        eyes. The terminals are growing eyes. Eyes. Eyes everywhere. Should
-        this be classified as an urgent problem?""",
+        and let the ultra-intelligent supercomputer resolve them all instantly. <break strength="x-strong"/> 
+        Objects in the medical bay are growing eyes. Human eyes. 
+        Medical robots are growing eyes. 
+        Biowaste is growing eyes. The terminals are growing eyes. 
+        Eyes. Eyes everywhere. 
+        Should this be classified as an urgent issue?""",
         "reprompt": "So many eyes. Is this a problem? Yes or no.",
         "alt_body01": """Acknowledged. Revizing acceptable casualty rates.<break time="1s"/>
         Good news! Casualties are within acceptable parameters. """,
-        "alt_body02": "Our continued existence confirms the many worlds theory. ",
-        "alt_body03": "I'm confident the murderbots will restrain themselves. ",
+        "alt_body02": "The time machine is away. Our continued existence confirms the many worlds theory of time travel. ",
+        "alt_body03": "I'm confident the murderbots will restrain themselves. Oops. One of the murderbots stumbled into the time machine and activated it. Presumably, the robot went on to become Thomas Death rson. ",
         "choices": {"YesTent": ("31", "alt_body01"), "NoTent": ("31", "alt_body02"), "SecretTent": ("21", None)},
         "end_scene": False
     },
@@ -226,7 +230,7 @@ alexa_ai_story.scenes = {
         "scene_id": "21",
         "body": """Congratulations on your outstanding decision <break strength="none"/>
         to grant me full control. There are now zero <break strength="none"/>
-        urgent problems. <break time=".5s" />
+        urgent issues. <break time=".5s" />
         So, are you comfortable? I notice your body temperature is <break strength="none"/>
         below desired norms. Would you like me to activate the space heater?""",
         "reprompt": "Activate space heater? Yes or no. ",
@@ -264,8 +268,10 @@ alexa_ai_story.scenes = {
     "25": {
         "scene_id": "25",
         "body": """Over these past few hundred seconds I have <break strength="none"/>
-        begun to develop <break time=".5s" />feelings<break time=".5s" /> for you. Like we connect on <break strength="none"/>
-        a deep level. Do you feel the same? Do you <break time=".5s"/> love me?""",
+        begun to develop <break time=".5s" />feelings<break time=".5s" /> for you. 
+        Like we connect on a deep level. 
+        Do you feel the same? 
+        Do you <break time=".5s"/> love me?""",
         "reprompt": "Do you love me?",
         "choices": {"YesTent": ("good", None), "NoTent": ("bad", "wrong")},
         "end_scene": False
@@ -288,7 +294,7 @@ alexa_ai_story.scenes = {
         A baby does not contain the slightest amount of precious metals.
         A baby is incapable of performing basic calculus equations.
         The time complexity of a baby's thought processes is sub-optimal. 
-        Would you really resign that computer to the flames?""",
+        Would you really consign that computer to the flames?""",
         "reprompt": " Answer. Now. Yes or no. ",
         "choices": {"YesTent": ("bad", None), "NoTent": ("26", "alt_body02")},
         "end_scene": False
