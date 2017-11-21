@@ -1,0 +1,53 @@
+YesTent yes
+YesTent yeah
+YesTent sure
+YesTent okay
+NoTent no
+NoTent nope
+NoTent nah
+UpTent up
+UpTent go up
+DownTent down
+DownTent go down
+LeftTent left
+LeftTent go left
+RightTent right
+RightTent go right
+NorthTent north
+NorthTent go north
+SouthTent south
+SouthTent go south
+EastTent east
+EastTent go east
+WestTent west
+WestTent go west
+ForwardTent forward
+ForwardTent go forward
+BackTent back
+BackTent go back
+ZeroTent zeroes
+ZeroTent zero
+OneTent one
+OneTent ones
+TwoTent two
+WhatTent aopwihfv
+WhatTent dunno
+WhatTent i dont know
+WhatTent dont know
+WhatTent qwerty
+WhatTent gazorpazorp
+WhatTent zxcvbnm
+WhatTent xyzyxx
+WhatTent kpfdashg
+WhatTent dgrehszc
+WhatTent hyjyjyjyj
+WhatTent bbwetry
+SecretTent alpha lambda xray
+RepeatTent what
+RepeatTent can you repeat that
+RepeatTent repeat
+RepeatTent repeat that
+RepeatTent say that again
+RepeatTent say again
+AfternoonDelightTent afternoon delight
+AfternoonDelightTent sky rockets in flight

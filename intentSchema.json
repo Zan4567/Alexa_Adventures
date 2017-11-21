@@ -1,0 +1,64 @@
+{
+  "intents": [
+    {
+      "intent": "AfternoonDelightTent"
+    },
+    {
+      "intent": "YesTent"
+    },
+    {
+      "intent": "NoTent"
+    },
+    {
+      "intent": "UpTent"
+    },
+    {
+      "intent": "DownTent"
+    },
+    {
+      "intent": "LeftTent"
+    },
+    {
+      "intent": "RightTent"
+    },
+    {
+      "intent": "NorthTent"
+    },
+    {
+      "intent": "SouthTent"
+    },
+    {
+      "intent": "EastTent"
+    },
+    {
+      "intent": "WestTent"
+    },
+    {
+      "intent": "ForwardTent"
+    },
+    {
+      "intent": "BackTent"
+    },
+    {
+      "intent": "ZeroTent"
+    },
+    {
+      "intent": "OneTent"
+    },
+    {
+      "intent": "TwoTent"
+    },
+    {
+      "intent": "WhatTent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    }
+  ]
+}
